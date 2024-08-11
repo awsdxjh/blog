@@ -13,7 +13,7 @@
     
     
     
-    <link rel="canonical" href="https://blog.w6wg.cn/post/20221208.html">
+    <link rel="canonical" href="https://blog.w6wg.cn/2022/01/02/0800">
     
     
     <title>【持续更新】Windows系统实用bat命令大全 | 爱博客 | 爱忘事的小家伙</title>
@@ -26,7 +26,7 @@
     <meta name="description" content="一启动系统服务命令123@echo offnet start 服务名称exit  结束系统服务命令123@echo offnet stop 服务名称exit  结束并重启服务命令1234567@echo offecho STOPnet stop 服务名称timeout 5echo STARTnet start 服务名称pause  timeout 5 表示等待5秒后再打开服务 设置服务启动类型12">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【持续更新】Windows系统实用bat命令大全">
-<meta property="og:url" content="https://blog.w6wg.cn/post/20221208.html">
+<meta property="og:url" content="https://blog.w6wg.cn/2022/01/02/0800">
 <meta property="og:site_name" content="爱博客">
 <meta property="og:description" content="一启动系统服务命令123@echo offnet start 服务名称exit  结束系统服务命令123@echo offnet stop 服务名称exit  结束并重启服务命令1234567@echo offecho STOPnet stop 服务名称timeout 5echo STARTnet start 服务名称pause  timeout 5 表示等待5秒后再打开服务 设置服务启动类型12">
 <meta property="og:locale" content="zh_CN">
@@ -243,7 +243,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.w6wg.cn/post/20221208.html&title=《【持续更新】Windows系统实用bat命令大全》 — 爱博客&pic=https://q.qlogo.cn/g?b=qq&k=d0gGCUUYPapgLkw9VF823A&kti=Y706qwAAAAA&s=640" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.w6wg.cn/2022/01/02/0800&title=《【持续更新】Windows系统实用bat命令大全》 — 爱博客&pic=https://q.qlogo.cn/g?b=qq&k=d0gGCUUYPapgLkw9VF823A&kti=Y706qwAAAAA&s=640" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -253,22 +253,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.w6wg.cn/post/20221208.html&title=《【持续更新】Windows系统实用bat命令大全》 — 爱博客&source=一个乐于分享的博客网站！" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.w6wg.cn/2022/01/02/0800&title=《【持续更新】Windows系统实用bat命令大全》 — 爱博客&source=一个乐于分享的博客网站！" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.w6wg.cn/post/20221208.html" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.w6wg.cn/2022/01/02/0800" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【持续更新】Windows系统实用bat命令大全》 — 爱博客&url=https://blog.w6wg.cn/post/20221208.html&via=https://blog.w6wg.cn" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【持续更新】Windows系统实用bat命令大全》 — 爱博客&url=https://blog.w6wg.cn/2022/01/02/0800&via=https://blog.w6wg.cn" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.w6wg.cn/post/20221208.html" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.w6wg.cn/2022/01/02/0800" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -291,7 +291,7 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/post/202221434.html" id="post-prev" class="post-nav-link">
+      <a href="/2022/02/14/3400" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">将exe程序用windows服务运行</h4>
       </a>
@@ -428,7 +428,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.w6wg.cn/post/20221208.html&title=《【持续更新】Windows系统实用bat命令大全》 — 爱博客&pic=https://q.qlogo.cn/g?b=qq&k=d0gGCUUYPapgLkw9VF823A&kti=Y706qwAAAAA&s=640" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.w6wg.cn/2022/01/02/0800&title=《【持续更新】Windows系统实用bat命令大全》 — 爱博客&pic=https://q.qlogo.cn/g?b=qq&k=d0gGCUUYPapgLkw9VF823A&kti=Y706qwAAAAA&s=640" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -438,22 +438,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.w6wg.cn/post/20221208.html&title=《【持续更新】Windows系统实用bat命令大全》 — 爱博客&source=一个乐于分享的博客网站！" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.w6wg.cn/2022/01/02/0800&title=《【持续更新】Windows系统实用bat命令大全》 — 爱博客&source=一个乐于分享的博客网站！" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.w6wg.cn/post/20221208.html" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.w6wg.cn/2022/01/02/0800" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【持续更新】Windows系统实用bat命令大全》 — 爱博客&url=https://blog.w6wg.cn/post/20221208.html&via=https://blog.w6wg.cn" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【持续更新】Windows系统实用bat命令大全》 — 爱博客&url=https://blog.w6wg.cn/2022/01/02/0800&via=https://blog.w6wg.cn" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.w6wg.cn/post/20221208.html" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.w6wg.cn/2022/01/02/0800" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -464,7 +464,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABvklEQVR42u3aQY7CMAwFUO5/aUaa9aR8O43pSC8rVKC8srDi77xe8Xr/ruvrq9fVe96wcHFxt7nvy7WiVFfyeNffxcXFnecmRSopVcknq3fDxcV9Mre3D0mIuLi4/5cbbUE2HgYXF/dp3KRpydHVK0d6NVxc3LOVJwpGd14fzHdxcXGL3F7ouV96mpErLi7uCDffjqyalurQNNlCfbgbLi7uCPeasnM9GbUmjRAuLu4897qg5EFnLy5JmqLlFgcXF/cAt3cQM2+KetuaQtuDi4t7mFuofEVWNRZZ/gouLu44t9oOVWOU/BBnIb/BxcU9wK02NjPzXlxc3O9yTxepvO2J7omLizvOvWtEuhOLfIhmcHFxv8TND1rl16vj1eU9cXFxR7i9Q1HJhiaPP/JNEi4u7gy3eZw6GKXsPBguLu4TuL2DU/e2OlGMi4uLO8itFrLq4YzqgxVSGVxc3APc3uCzuvU5F5fg4uKe4+5EFSdGqri4uM/h5sVrpzpWP7PMd3FxcR/D3RqOtr77x7u4uLiP5OZjlZ0jnksbLi7uIDcPN/MQpNpERX8QLi7uCLcXmCa1pTpezYc3uLi4x7g/vozdRF250fMAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAAB0ElEQVR42u3aQW7DMAwEQP//0865aCwvRUt1gdGpSONklMOCpHQc8Tov1tU7r576/fqxYuHi4ra553Dl7xl/cr6Bm8/HxcXdyE0iKQm1JLDGT93YcHFxX8wdf/042pLPxMXF/b/cvEwZBxwuLu47udXCJW91OmUTLi7uX3HzKeW6v5fMd3Fxcae4Z3Elw468KSp/Oy4u7hZuHihPHa7MjVFwcXF3csshMoyh/LpG0hRd/q64uLiLudG/g7DLn5rb5M1vjIuL+yg3j6q5jXWGnl+CDxcXdwu3XF4E28iDLymnbno1XFzcZdz8oLR62aJTGEUhiIuLu4A7V47kLU0Sdsm45EdFhouLu5hbLUcKLUqwjblt4+Li7uEmuNbhR2PUUm5+cHFxH+KuGILkI49qOOLi4u7kVl+pXurKR6U3xRAuLu4LuNUwqh6rPNCr4eLiLuP225sVFy8m+zNcXNwG9yyuTvkyd80LFxd3P7caLtXhZucYphWIuLi4be7cqCI/Rq0GWaH5wcXFXcztXK3IM7IzYMXFxX0/d+7qVbVsKuwYFxf3NdxqJM11YI8FGS4ubpGbNyr5RY1q85O0W7i4uHu4/XPaapkyN3bBxcXdwv0A33Mp+NMnlZYAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 
