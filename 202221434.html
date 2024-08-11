@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <link rel="canonical" href="https://blog.w6wg.cn/202221434.html">
+    
+    
+    <title>将exe程序用windows服务运行 | 爱博客 | 爱忘事的小家伙</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="此方法可以在不登录系统的情况下运行windows程序 1. 下载instsrv.exe和srvany.exe点我下载 将两个文件放到C盘某个文件夹中，这里为C:\fuwu                                                                                              0               2. 以管">
+<meta property="og:type" content="article">
+<meta property="og:title" content="将exe程序用windows服务运行">
+<meta property="og:url" content="https://blog.w6wg.cn/202221434.html">
+<meta property="og:site_name" content="爱博客">
+<meta property="og:description" content="此方法可以在不登录系统的情况下运行windows程序 1. 下载instsrv.exe和srvany.exe点我下载 将两个文件放到C盘某个文件夹中，这里为C:\fuwu                                                                                              0               2. 以管">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.w6wg.cn/i/2022/07/15/mdmyy7.png">
+<meta property="og:image" content="https://img.w6wg.cn/i/2022/07/15/mdqo6v.png">
+<meta property="og:image" content="https://img.w6wg.cn/i/2022/07/15/mdtr4l.png">
+<meta property="og:image" content="https://img.w6wg.cn/i/2022/07/15/me5dpa.png">
+<meta property="og:image" content="https://img.w6wg.cn/i/2022/07/15/me8hfw.png">
+<meta property="og:image" content="https://img.w6wg.cn/i/2022/07/15/mebhk1.png">
+<meta property="og:image" content="https://img.w6wg.cn/i/2022/07/15/meegkg.png">
+<meta property="og:image" content="https://img.w6wg.cn/i/2022/07/15/mehmwe.png">
+<meta property="og:image" content="https://img.w6wg.cn/i/2022/07/15/mettb7.png">
+<meta property="article:published_time" content="2022-02-14T11:34:00.000Z">
+<meta property="article:modified_time" content="2024-08-11T06:25:48.556Z">
+<meta property="article:author" content="爱忘事的小家伙">
+<meta property="article:tag" content="博客,爱博客,爱忘事的小家伙">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.w6wg.cn/i/2022/07/15/mdmyy7.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="爱博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="https://w6wg.cn/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/gm.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://q.qlogo.cn/g?b=qq&k=d0gGCUUYPapgLkw9VF823A&kti=Y706qwAAAAA&s=640">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">爱忘事的小家伙</h5>
+          <a href="mailto:1511942692@qq.com" title="1511942692@qq.com" class="mail">1511942692@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                目录
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://qm.qq.com/q/BdI1hBEHg6" target="_blank" >
+                <i class="icon icon-lg icon-qq"></i>
+                QQ
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">将exe程序用windows服务运行</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">将exe程序用windows服务运行</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2022-02-14T11:34:00.000Z" itemprop="datePublished" class="page-time">
+  2022-02-14
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-%E4%B8%8B%E8%BD%BD"><span class="post-toc-number">1.</span> <span class="post-toc-text">1. 下载</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-%E4%BB%A5%E7%AE%A1%E7%90%86%E5%91%98%E8%BA%AB%E4%BB%BD%E8%BF%90%E8%A1%8Ccmd"><span class="post-toc-number">2.</span> <span class="post-toc-text">2. 以管理员身份运行cmd</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-%E6%89%93%E5%BC%80%E6%B3%A8%E5%86%8C%E8%A1%A8"><span class="post-toc-number">3.</span> <span class="post-toc-text">3. 打开注册表</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-%E6%89%93%E5%BC%80%E6%9C%8D%E5%8A%A1"><span class="post-toc-number">4.</span> <span class="post-toc-text">4. 打开服务</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-%E5%88%A0%E9%99%A4%E6%9C%8D%E5%8A%A1"><span class="post-toc-number">5.</span> <span class="post-toc-text">5. 删除服务</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-将exe程序用windows服务运行"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">将exe程序用windows服务运行</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2022-02-14 19:34:00" datetime="2022-02-14T11:34:00.000Z"  itemprop="datePublished">2022-02-14</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>此方法可以在不登录系统的情况下运行windows程序</p>
+<h4 id="1-下载"><a href="#1-下载" class="headerlink" title="1. 下载"></a>1. 下载</h4><p>instsrv.exe和srvany.exe<a href="%5Bhttps://200408.lanzout.com/iy7cE27507da">点我下载</a></p>
+<p>将两个文件放到C盘某个文件夹中，这里为<code>C:\fuwu</code></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img.w6wg.cn/i/2022/07/15/mdmyy7.png" alt="0" title="">
+                </div>
+                <div class="image-caption">0</div>
+            </figure>
+
+<h4 id="2-以管理员身份运行cmd"><a href="#2-以管理员身份运行cmd" class="headerlink" title="2. 以管理员身份运行cmd"></a>2. 以管理员身份运行cmd</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img.w6wg.cn/i/2022/07/15/mdqo6v.png" alt="1" title="">
+                </div>
+                <div class="image-caption">1</div>
+            </figure>
+<p>cmd里面输入以下内容并回车，其中两个引号里面分别是上面下载的两个程序的路径，aaa为服务名称，可任意修改</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;C:\fuwu\instsrv.exe&quot; aaa &quot;C:\fuwu\srvany.exe&quot;</span><br></pre></td></tr></table></figure>
+
+<p>提示下面内容就表示成功了</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img.w6wg.cn/i/2022/07/15/mdtr4l.png" alt="2" title="">
+                </div>
+                <div class="image-caption">2</div>
+            </figure>
+
+<h4 id="3-打开注册表"><a href="#3-打开注册表" class="headerlink" title="3. 打开注册表"></a>3. 打开注册表</h4><p>按Win+R打开运行输入<code>redegit</code></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img.w6wg.cn/i/2022/07/15/me5dpa.png" alt="3" title="">
+                </div>
+                <div class="image-caption">3</div>
+            </figure>
+<p>找到目录<code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\aaa</code>（路径里面的aaa是你的服务名称）<br>右键单击”aaa”选择新建项，名称为”Parameters”</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img.w6wg.cn/i/2022/07/15/me8hfw.png" alt="4" title="">
+                </div>
+                <div class="image-caption">4</div>
+            </figure>
+
+<p>选中”Parameters”，在右边新建一个字符串值，名称为”Application”</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img.w6wg.cn/i/2022/07/15/mebhk1.png" alt="5" title="">
+                </div>
+                <div class="image-caption">5</div>
+            </figure>
+<p>数值数据里填写你要做成服务的程序的完整路径（带exe程序名)<br>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E:\QQ\Bin\QQ.exe</span><br></pre></td></tr></table></figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img.w6wg.cn/i/2022/07/15/meegkg.png" alt="6" title="">
+                </div>
+                <div class="image-caption">6</div>
+            </figure>
+<p>再次创建一个字符串值，名称为”AppDirectory”，数值数据里填写你要做成服务的程序所在的目录<br>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E:\QQ\Bin</span><br></pre></td></tr></table></figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img.w6wg.cn/i/2022/07/15/mehmwe.png" alt="7" title="">
+                </div>
+                <div class="image-caption">7</div>
+            </figure>
+
+<h4 id="4-打开服务"><a href="#4-打开服务" class="headerlink" title="4. 打开服务"></a>4. 打开服务</h4><p>Win+R打开运行输入<code>services.msc</code>打开服务，可以找到aaa这个服务，启动这个服务就可以了</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img.w6wg.cn/i/2022/07/15/mettb7.png" alt="8" title="">
+                </div>
+                <div class="image-caption">8</div>
+            </figure>
+
+<h4 id="5-删除服务"><a href="#5-删除服务" class="headerlink" title="5. 删除服务"></a>5. 删除服务</h4><p>如果想删除这个服务，删除注册表中创建的”aaa”项，然后重启电脑即可。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2024-08-11T06:25:48.556Z" itemprop="dateUpdated">2024-08-11 14:25:48</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://blog.w6wg.cn">
+            <img src="https://q.qlogo.cn/g?b=qq&k=d0gGCUUYPapgLkw9VF823A&kti=Y706qwAAAAA&s=640" alt="爱忘事的小家伙">
+            爱忘事的小家伙
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.w6wg.cn/202221434.html&title=《将exe程序用windows服务运行》 — 爱博客&pic=https://q.qlogo.cn/g?b=qq&k=d0gGCUUYPapgLkw9VF823A&kti=Y706qwAAAAA&s=640" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.w6wg.cn/202221434.html&title=《将exe程序用windows服务运行》 — 爱博客&source=一个乐于分享的博客网站！" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.w6wg.cn/202221434.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《将exe程序用windows服务运行》 — 爱博客&url=https://blog.w6wg.cn/202221434.html&via=https://blog.w6wg.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.w6wg.cn/202221434.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/20221208.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">【持续更新】Windows系统实用bat命令大全</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+<!-- 
+<section class="comments" id="comments">
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+            owner: '',
+            repo: '',
+            oauth: {
+                client_id: '',
+                client_secret: '',
+            },
+        })
+        gitment.render('comments')
+    </script>
+</section>
+ -->
+
+
+
+    <section class="comments" id="comments">
+        <div id="gitment_thread"></div>
+        <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+        <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+        <script>
+            var gitment = new Gitment({
+                owner: 'awsdxjh',
+                repo: 'blog',
+                oauth: {
+                    client_id: 'Ov23lirnV6QTU0Hk2WSD',
+                    client_secret: '65b4f55fa66115c1938b5f0c50f329336b32723b',
+                },
+            })
+            gitment.render('comments')
+        </script>
+    </section>
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        
+
+<footer class="footer">
+    
+    <div class="top">
+        
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>爱忘事的小家伙 &copy; 2021 - 2024</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank"><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37162302000368"> 鲁公网安备 37162302000368号</a></a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.w6wg.cn/202221434.html&title=《将exe程序用windows服务运行》 — 爱博客&pic=https://q.qlogo.cn/g?b=qq&k=d0gGCUUYPapgLkw9VF823A&kti=Y706qwAAAAA&s=640" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.w6wg.cn/202221434.html&title=《将exe程序用windows服务运行》 — 爱博客&source=一个乐于分享的博客网站！" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.w6wg.cn/202221434.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《将exe程序用windows服务运行》 — 爱博客&url=https://blog.w6wg.cn/202221434.html&via=https://blog.w6wg.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.w6wg.cn/202221434.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABwUlEQVR42u3aQY7DIAwF0N7/0h1p1pPm2waakR6rqknIIwsLbL9e8Xj/jqv/P1+9uvPqqQUDFxd3zH1/HFcv3reYKwMuLu55bjLd50UmV5PPcWPDxcV9GDcJPdX9CS4u7n/nJtDexggXF/eZ3ASRh6HqArac1XBxcQfcasJ0x++N+V1cXNwi990a8yU134uLi3uEmxQ88tRGr7hSLr7i4uIe4VYTH5N7esnTm1wOLi7uUm4y0eT/ydbnj5lxcXGPc3tl1Og1ra3SzbEHFxd3G7fahtW7v1p2jRIxuLi4R7i9KZLgtax0iouLe5ybpyx7G5rqp7mR4OLiHuFWm7Tm5ZYkFOLi4p7n9potqqmQyTGp3C2Ci4s75labLaphKwl/zZowLi7uEW6eyhwFmvibLcjv4uLijrnVB/INUL6FKpdacXFxN3OrE61dZDnk4eLibuP2gk61QTNv/Lr5fLi4uEe484NKngrpJVJxcXG/xa0WVquBLA9zC0qtuLi4S7n5i3ttW8vSqbi4uI/nVouvyRHoZi+Gi4v7MO7adGpzNlxc3IPcapJ0XmRNCjBRzQcXF3cDt3oU6RVF5g0cuLi4R7g/lKSfZpO3D+UAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
