@@ -173,9 +173,43 @@
 
 
 
+<section class="comments" id="comments">
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+            owner: 'awsdxjh',
+            repo: 'blog',
+            oauth: {
+                client_id: 'Ov23lirnV6QTU0Hk2WSD',
+                client_secret: '65b4f55fa66115c1938b5f0c50f329336b32723b',
+            },
+        })
+        gitment.render('comments')
+    </script>
+</section>
 
 
-<!--  -->
+
+<!-- 
+    <section class="comments" id="comments">
+        <div id="gitment_thread"></div>
+        <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+        <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+        <script>
+            var gitment = new Gitment({
+                owner: '',
+                repo: '',
+                oauth: {
+                    client_id: '',
+                    client_secret: '',
+                },
+            })
+            gitment.render('comments')
+        </script>
+    </section>
+     -->
     
 
 
@@ -184,30 +218,6 @@
 
 
 
-
-<section class="comments" id="comments">
-    <div id="gitalk-container"></div>
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-    <script>
-        var id = location.pathname
-        if (location.pathname.length > 50) {
-          id = location.pathname.replace(/\/\d+\/\d+\/\d+\//, '').replace('/', '').substring(0, 50)
-        }
-        const gitalk = new Gitalk({
-          clientID: 'Ov23lirnV6QTU0Hk2WSD',
-          clientSecret: '65b4f55fa66115c1938b5f0c50f329336b32723b',
-          repo: 'blog',
-          owner: 'awsdxjh',
-          admin: ['awsdxjh'],
-          id: id,      // Ensure uniqueness and length less than 50
-          title: document.title.split('|')[0],
-          distractionFreeMode: false  // Facebook-like distraction free mode
-        })
-
-        gitalk.render('gitalk-container')
-    </script>
-</section>
 
 
 
