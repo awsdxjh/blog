@@ -338,12 +338,12 @@
         <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
         <script>
             var gitment = new Gitment({
-                id: location.href,
-                owner: awsdxjh,
-                repo: blog,
+                id: 'location.href',
+                owner: 'awsdxjh',
+                repo: 'blog',
                 oauth: {
-                    client_id: Ov23lirnV6QTU0Hk2WSD,
-                    client_secret: 65b4f55fa66115c1938b5f0c50f329336b32723b,
+                    client_id: 'Ov23lirnV6QTU0Hk2WSD',
+                    client_secret: '65b4f55fa66115c1938b5f0c50f329336b32723b',
                 },
             })
             gitment.render('comments')
@@ -352,6 +352,30 @@
     
     
 
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "DUGiRnX8a0SZO7Cs17JLqkcd-gzGzoHsz",
+            appKey: "THS3SECzgNszQjkQuF6Tw07k",
+            avatar: "mm",
+            placeholder: "输入评论",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
 
 
 
