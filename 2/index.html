@@ -40,7 +40,7 @@
 <meta property="og:image" content="https://img.w6wg.cn/i/2022/07/15/mehmwe.png">
 <meta property="og:image" content="https://img.w6wg.cn/i/2022/07/15/mettb7.png">
 <meta property="article:published_time" content="2022-02-14T11:34:00.000Z">
-<meta property="article:modified_time" content="2024-08-14T02:48:26.249Z">
+<meta property="article:modified_time" content="2024-08-15T08:21:28.610Z">
 <meta property="article:author" content="爱忘事的小家伙">
 <meta property="article:tag" content="计算机">
 <meta property="article:tag" content="电脑知识">
@@ -289,7 +289,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2024-08-14T02:48:26.249Z" itemprop="dateUpdated">2024-08-14 10:48:26</time>
+    最后更新时间：<time datetime="2024-08-15T08:21:28.610Z" itemprop="dateUpdated">2024-08-15 16:21:28</time>
 </span><br>
 
 
@@ -404,31 +404,30 @@
 
 
 
-<section class="comments" id="comments">
-    <div id="gitalk-container"></div>
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-    <script>
-        var id = location.pathname
-        if (location.pathname.length > 50) {
-          id = location.pathname.replace(/\/\d+\/\d+\/\d+\//, '').replace('/', '').substring(0, 50)
-        }
-        const gitalk = new Gitalk({
-          clientID: 'Ov23lirnV6QTU0Hk2WSD',
-          clientSecret: '65b4f55fa66115c1938b5f0c50f329336b32723b',
-          repo: 'blog',
-          owner: 'awsdxjh',
-          admin: ['awsdxjh'],
-          id: id,      // Ensure uniqueness and length less than 50
-          title: document.title.split('|')[0],
-          distractionFreeMode: false  // Facebook-like distraction free mode
-        })
 
-        gitalk.render('gitalk-container')
+
+
+<head>
+    <!-- ... -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@waline/client@v3/dist/waline.css"
+    />
+    <!-- ... -->
+  </head>
+  <body>
+    <!-- ... -->
+    <div id="waline"></div>
+    <script type="module">
+      import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+  
+      init({
+        el: '#waline',
+        serverURL: 'https://cm.w6wg.cn',
+      });
     </script>
-</section>
-
-
+  </body>
+  
 
 
 </article>
