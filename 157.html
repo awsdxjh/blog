@@ -16,19 +16,19 @@
     <link rel="canonical" href="https://blog.w6wg.cn/157.html">
     
     
-    <title>将exe程序用Windows服务运行 | 爱博客 | 爱忘事的小家伙</title>
+    <title>将电脑程序用Windows服务运行 | 爱博客 | 爱忘事的小家伙</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#2e2e2e">
     
     
     <meta name="keywords" content="计算机,电脑知识">
-    <meta name="description" content="此方法可以在不登录系统的情况下运行windows程序 1. 下载instsrv.exe和srvany.exe 点我下载 将两个文件放到C盘某个文件夹中，这里为C:\fuwu                                                                                                             2. 以管">
+    <meta name="description" content="此方法可以开机时不登录系统自动运行Windows程序 1. 下载instsrv.exe和srvany.exe 点我下载 将两个文件放到C盘某个文件夹中，这里为C:\fuwu                                                                                                             2. 以管">
 <meta property="og:type" content="article">
-<meta property="og:title" content="将exe程序用Windows服务运行">
+<meta property="og:title" content="将电脑程序用Windows服务运行">
 <meta property="og:url" content="https://blog.w6wg.cn/157.html">
 <meta property="og:site_name" content="爱博客">
-<meta property="og:description" content="此方法可以在不登录系统的情况下运行windows程序 1. 下载instsrv.exe和srvany.exe 点我下载 将两个文件放到C盘某个文件夹中，这里为C:\fuwu                                                                                                             2. 以管">
+<meta property="og:description" content="此方法可以开机时不登录系统自动运行Windows程序 1. 下载instsrv.exe和srvany.exe 点我下载 将两个文件放到C盘某个文件夹中，这里为C:\fuwu                                                                                                             2. 以管">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img.w6wg.cn/i/2022/07/15/mdmyy7.png">
 <meta property="og:image" content="https://img.w6wg.cn/i/2022/07/15/mdqo6v.png">
@@ -40,7 +40,7 @@
 <meta property="og:image" content="https://img.w6wg.cn/i/2022/07/15/mehmwe.png">
 <meta property="og:image" content="https://img.w6wg.cn/i/2022/07/15/mettb7.png">
 <meta property="article:published_time" content="2022-02-14T11:34:00.000Z">
-<meta property="article:modified_time" content="2024-08-20T09:12:12.721Z">
+<meta property="article:modified_time" content="2024-08-20T13:50:03.863Z">
 <meta property="article:author" content="爱忘事的小家伙">
 <meta property="article:tag" content="计算机">
 <meta property="article:tag" content="电脑知识">
@@ -133,7 +133,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">将exe程序用Windows服务运行</div>
+        <div class="flex-col header-title ellipsis">将电脑程序用Windows服务运行</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -155,7 +155,7 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">将exe程序用Windows服务运行</h1>
+        <h1 class="title">将电脑程序用Windows服务运行</h1>
         <h5 class="subtitle">
             
                 <time datetime="2022-02-14T11:34:00.000Z" itemprop="datePublished" class="page-time">
@@ -187,7 +187,7 @@
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">将exe程序用Windows服务运行</h1>
+        <h1 class="post-card-title">将电脑程序用Windows服务运行</h1>
         <div class="post-meta">
             <time class="post-time" title="2022-02-14 19:34:00" datetime="2022-02-14T11:34:00.000Z"  itemprop="datePublished">2022-02-14</time>
 
@@ -202,7 +202,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>此方法可以在不登录系统的情况下运行windows程序</p>
+            <p>此方法可以开机时不登录系统自动运行Windows程序</p>
 <h4 id="1-下载"><a href="#1-下载" class="headerlink" title="1. 下载"></a><strong>1. 下载</strong></h4><p>instsrv.exe和srvany.exe <a target="_blank" rel="noopener" href="https://200408.lanzout.com/iy7cE27507da">点我下载</a></p>
 <p>将两个文件放到C盘某个文件夹中，这里为<code>C:\fuwu</code></p>
 <figure class="image-bubble">
@@ -257,14 +257,14 @@
                 </div>
                 <div class="image-caption"></div>
             </figure>
-<p>数值数据里填写你要做成服务的程序的完整路径（带exe程序名)<br>例如：</p>
+<p>数值数据里填写你要做成服务的程序的完整路径（带程序名称+后缀)<br>例如：</p>
 <pre><code>E:\QQ\Bin\QQ.exe
 </code></pre>
 <p><img src="https://img.w6wg.cn/i/2022/07/15/meegkg.png"><br>再次创建一个字符串值，名称为”AppDirectory”，数值数据里填写你要做成服务的程序所在的目录<br>例如：</p>
 <pre><code>E:\QQ\Bin
 </code></pre>
 <p><img src="https://img.w6wg.cn/i/2022/07/15/mehmwe.png"></p>
-<h4 id="4-打开服务"><a href="#4-打开服务" class="headerlink" title="4. 打开服务"></a><strong>4. 打开服务</strong></h4><p>Win+R打开运行输入<code>services.msc</code>打开服务，可以找到aaa这个服务，启动这个服务就可以了</p>
+<h4 id="4-打开服务"><a href="#4-打开服务" class="headerlink" title="4. 打开服务"></a><strong>4. 打开服务</strong></h4><p>Win+R打开运行输入<code>services.msc</code>打开服务，可以找到创建的服务，启动这个服务就可以了，双击服务可以设置启动方式</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -273,7 +273,7 @@
                 <div class="image-caption"></div>
             </figure>
 
-<h4 id="5-删除服务"><a href="#5-删除服务" class="headerlink" title="5. 删除服务"></a><strong>5. 删除服务</strong></h4><p>如果想删除这个服务，删除注册表中创建的”aaa”项，然后重启电脑即可。</p>
+<h4 id="5-删除服务"><a href="#5-删除服务" class="headerlink" title="5. 删除服务"></a><strong>5. 删除服务</strong></h4><p>如果想删除这个服务，删除注册表中创建的服务名称的文件夹，然后重启电脑即可。</p>
 
         </div>
 
@@ -282,7 +282,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2024-08-20T09:12:12.721Z" itemprop="dateUpdated">2024-08-20 17:12:12</time>
+    最后更新时间：<time datetime="2024-08-20T13:50:03.863Z" itemprop="dateUpdated">2024-08-20 21:50:03</time>
 </span><br>
 
 
@@ -316,7 +316,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.w6wg.cn/157.html&title=《将exe程序用Windows服务运行》 — 爱博客&pic=https://q.qlogo.cn/g?b=qq&k=d0gGCUUYPapgLkw9VF823A&kti=Y706qwAAAAA&s=640" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.w6wg.cn/157.html&title=《将电脑程序用Windows服务运行》 — 爱博客&pic=https://q.qlogo.cn/g?b=qq&k=d0gGCUUYPapgLkw9VF823A&kti=Y706qwAAAAA&s=640" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -326,7 +326,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.w6wg.cn/157.html&title=《将exe程序用Windows服务运行》 — 爱博客&source=一个乐于分享的博客网站！" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.w6wg.cn/157.html&title=《将电脑程序用Windows服务运行》 — 爱博客&source=一个乐于分享的博客网站！" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -336,7 +336,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《将exe程序用Windows服务运行》 — 爱博客&url=https://blog.w6wg.cn/157.html&via=https://blog.w6wg.cn" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《将电脑程序用Windows服务运行》 — 爱博客&url=https://blog.w6wg.cn/157.html&via=https://blog.w6wg.cn" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
@@ -507,7 +507,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.w6wg.cn/157.html&title=《将exe程序用Windows服务运行》 — 爱博客&pic=https://q.qlogo.cn/g?b=qq&k=d0gGCUUYPapgLkw9VF823A&kti=Y706qwAAAAA&s=640" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.w6wg.cn/157.html&title=《将电脑程序用Windows服务运行》 — 爱博客&pic=https://q.qlogo.cn/g?b=qq&k=d0gGCUUYPapgLkw9VF823A&kti=Y706qwAAAAA&s=640" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -517,7 +517,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.w6wg.cn/157.html&title=《将exe程序用Windows服务运行》 — 爱博客&source=一个乐于分享的博客网站！" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.w6wg.cn/157.html&title=《将电脑程序用Windows服务运行》 — 爱博客&source=一个乐于分享的博客网站！" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -527,7 +527,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《将exe程序用Windows服务运行》 — 爱博客&url=https://blog.w6wg.cn/157.html&via=https://blog.w6wg.cn" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《将电脑程序用Windows服务运行》 — 爱博客&url=https://blog.w6wg.cn/157.html&via=https://blog.w6wg.cn" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
