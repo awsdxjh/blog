@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <link rel="canonical" href="https://blog.w6wg.cn/419.html">
+    
+    
+    <title>Windows创建软链接 | 爱博客 | 爱忘事的小家伙</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#2e2e2e">
+    
+    
+    <meta name="keywords" content="计算机,电脑知识">
+    <meta name="description" content="​    软连接的功能是为某一个文件或文件夹在另外一个位置建立一个链接​    当我们需要在不同的目录，用到相同的文件时，不需要在每一个需要的目录下都复制一次文件，只要在需要用到的目录下创建一个文件或文件夹软链接即可 步骤： 1、按键盘上的win键输入cmd，右键单击命令提示符用管理员身份运行 2、在打开的命令窗口中输入mklink，回车 3、按照给出的格式输入相应的指令例如创建一个目录的软链接：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows创建软链接">
+<meta property="og:url" content="https://blog.w6wg.cn/419.html">
+<meta property="og:site_name" content="爱博客">
+<meta property="og:description" content="​    软连接的功能是为某一个文件或文件夹在另外一个位置建立一个链接​    当我们需要在不同的目录，用到相同的文件时，不需要在每一个需要的目录下都复制一次文件，只要在需要用到的目录下创建一个文件或文件夹软链接即可 步骤： 1、按键盘上的win键输入cmd，右键单击命令提示符用管理员身份运行 2、在打开的命令窗口中输入mklink，回车 3、按照给出的格式输入相应的指令例如创建一个目录的软链接：">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-11-29T08:35:00.000Z">
+<meta property="article:modified_time" content="2024-08-20T09:15:35.058Z">
+<meta property="article:author" content="爱忘事的小家伙">
+<meta property="article:tag" content="计算机">
+<meta property="article:tag" content="电脑知识">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="爱博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="https://w6wg.cn/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/gm.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://q.qlogo.cn/g?b=qq&k=d0gGCUUYPapgLkw9VF823A&kti=Y706qwAAAAA&s=640">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">爱忘事的小家伙</h5>
+          <a href="mailto:1511942692@qq.com" title="1511942692@qq.com" class="mail">1511942692@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/guestbook"  >
+                <i class="icon icon-lg icon-comment"></i>
+                留言
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://w6wg.cn" target="_blank" >
+                <i class="icon icon-lg icon-user"></i>
+                站长主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://qm.qq.com/q/BdI1hBEHg6" target="_blank" >
+                <i class="icon icon-lg icon-qq"></i>
+                联系站长
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Windows创建软链接</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Windows创建软链接</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2023-11-29T08:35:00.000Z" itemprop="datePublished" class="page-time">
+  2023-11-29
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-Windows创建软链接"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Windows创建软链接</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2023-11-29 16:35:00" datetime="2023-11-29T08:35:00.000Z"  itemprop="datePublished">2023-11-29</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>​    软连接的功能是为某一个文件或文件夹在另外一个位置建立一个链接<br>​    当我们需要<strong>在不同的目录</strong>，<strong>用到相同的文件</strong>时，不需要在每一个需要的目录下都复制一次文件，只要在需要用到的目录下创建一个文件或文件夹软链接即可</p>
+<p><strong>步骤：</strong></p>
+<p><strong>1、</strong>按键盘上的win键输入<code>cmd</code>，右键单击<code>命令提示符</code>用管理员身份运行</p>
+<p><strong>2、</strong>在打开的命令窗口中输入<code>mklink</code>，回车</p>
+<p><strong>3、</strong>按照给出的格式输入相应的指令<br>例如创建一个目录的软链接：</p>
+<pre><code>mkink /j &quot;需要创建软链接的文件夹路径&quot; &quot;源文件夹路径&quot;
+</code></pre>
+<p>（若失败可尝试去掉双引号，需要创建软链接的文件夹不需要自己提前创建）</p>
+<pre><code>/j 创建一个文件夹软链接
+/d 创建一个文件软链接
+/h 创建一个硬链接
+</code></pre>
+<p><strong>4、</strong>如果需要删除软链接，用下面的指令</p>
+<pre><code>rmdir &quot;C:\bbb&quot;
+</code></pre>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2024-08-20T09:15:35.058Z" itemprop="dateUpdated">2024-08-20 17:15:35</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://blog.w6wg.cn">
+            <img src="https://q.qlogo.cn/g?b=qq&k=d0gGCUUYPapgLkw9VF823A&kti=Y706qwAAAAA&s=640" alt="爱忘事的小家伙">
+            爱忘事的小家伙
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%94%B5%E8%84%91%E7%9F%A5%E8%AF%86/" rel="tag">电脑知识</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/" rel="tag">计算机</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.w6wg.cn/419.html&title=《Windows创建软链接》 — 爱博客&pic=https://q.qlogo.cn/g?b=qq&k=d0gGCUUYPapgLkw9VF823A&kti=Y706qwAAAAA&s=640" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.w6wg.cn/419.html&title=《Windows创建软链接》 — 爱博客&source=一个乐于分享的博客网站！" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.w6wg.cn/419.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Windows创建软链接》 — 爱博客&url=https://blog.w6wg.cn/419.html&via=https://blog.w6wg.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.w6wg.cn/419.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/157.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">将exe程序用Windows服务运行</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+<!--  -->
+    
+
+
+
+
+
+
+
+
+
+
+
+<head>
+    <!-- ... -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@waline/client@v3/dist/waline.css"
+    />
+    <!-- ... -->
+  </head>
+  <body>
+    <!-- ... -->
+    <div id="waline"></div>
+    <script type="module">
+      import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+  
+      init({
+        el: '#waline',
+        serverURL: 'https://cm.w6wg.cn',
+      });
+    </script>
+  </body>
+  
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        
+
+<footer class="footer">
+    
+    <div class="top">
+        
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>爱忘事的小家伙 &copy; 2021 - 2024</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank"><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37162302000368"> 鲁公网安备 37162302000368号</a></a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.w6wg.cn/419.html&title=《Windows创建软链接》 — 爱博客&pic=https://q.qlogo.cn/g?b=qq&k=d0gGCUUYPapgLkw9VF823A&kti=Y706qwAAAAA&s=640" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.w6wg.cn/419.html&title=《Windows创建软链接》 — 爱博客&source=一个乐于分享的博客网站！" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.w6wg.cn/419.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Windows创建软链接》 — 爱博客&url=https://blog.w6wg.cn/419.html&via=https://blog.w6wg.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.w6wg.cn/419.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABv0lEQVR42u3aQWrEMAwF0Ln/pVMo3ZUkX1LspvC8GsJgv2QhZEmfT7yO7/X7ydk6++fZk4cXLi7umJscfPY7eaVrdPXlcXFxd3Kvj78ORtc75PsnnwAXF/dt3GrSk++Ji4v7f7l5MjSh4+LivofbQ0zQy+9quLi4A261YLri98L6Li4ubpF7FFfvIjQ/92cfXFzcLdz8+GoYypuySaOl0LHBxcUdc/PGZ+/I6svcFF5xcXG3cKt/rbZP8mhaSKFwcXG3cPPLSR6YJmlNuWCKi4u7mJsXN3tBrdo4uUHj4uIu5vZapz1Kb6gLFxd3D7dXYc1foDdIgYuL+7fcJK2ptj2SEmry/PTD4eLibuROkpLePsmIBi4u7n5uHlDygulkqOuGjouLu4U7Gbc6Fqwo2OHi4i7m5kFqXu584PqEi4u7kVsdpFg4YnV9Li4u7kbuJAVZOLRd7QPj4uI+xK0GlGqvM9+zVy7BxcVdx13XSsnTpkIyhIuLu5HbG8DqJTSTAIeLi/s2bp4f9cqjhRQHFxf3ZdxeoyWnPxzIcHFxB9zk8pMnPdUGaiHY4eLibuFWC6b5pr3EaNK8wcXFHXO/ACgIbMNI/M5mAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
