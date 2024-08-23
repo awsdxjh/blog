@@ -6,7 +6,7 @@
   <link href="https://blog.w6wg.cn/atom.xml" rel="self"/>
   
   <link href="https://blog.w6wg.cn/"/>
-  <updated>2024-08-23T08:15:37.160Z</updated>
+  <updated>2024-08-23T14:52:09.343Z</updated>
   <id>https://blog.w6wg.cn/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>微信清空性别和地区</title>
+    <link href="https://blog.w6wg.cn/2.html"/>
+    <id>https://blog.w6wg.cn/2.html</id>
+    <published>2024-08-23T14:09:00.000Z</published>
+    <updated>2024-08-23T14:52:09.343Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="新设备登录微信"><a href="#新设备登录微信" class="headerlink" title="新设备登录微信"></a>新设备登录微信</h1><p>1.用没登录过自己微信的手机登录微信（理论双开也可以），电脑可以用模拟器（<a href="https://syzs.qq.com/">腾讯手游助手</a>、<a href="https://www.ldmnq.com/">雷电模拟器</a>、<a href="https://www.xyaz.cn/">逍遥模拟器</a>、<a href="https://mumu.163.com/">MuMu模拟器</a>等）</p><p>2.登录之后打开个人资料，进入性别设置，跟下图一样男女都没选择就代表成功了，如果不是就换个手机或模拟器</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://img.w6wg.cn/imgs/wxkbxbdq.jpg" alt="1" title="">                </div>                <div class="image-caption">1</div>            </figure><h1 id="情况一：原手机苹果"><a href="#情况一：原手机苹果" class="headerlink" title="情况一：原手机苹果"></a>情况一：原手机苹果</h1><p>如果自己手机是苹果，那么再登录回微信时性别和地区已经显示空白了</p><p>如果微信好友是安卓手机看情况二</p><h1 id="情况二：原手机安卓"><a href="#情况二：原手机安卓" class="headerlink" title="情况二：原手机安卓"></a>情况二：原手机安卓</h1><p>如果自己手机是安卓，那么需要卸载重装微信才会显示空白（重要资料提前备份），因为安卓有缓存（可以先试试清空缓存）</p><p>同样如果微信好友是安卓手机并且缓存了你的性别地区，也需要卸载重装才会看到空白性别地区</p><p>（可以参考视频教程：<a href="https://space.bilibili.com/411207387/">https://space.bilibili.com/411207387/</a>）</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;新设备登录微信&quot;&gt;&lt;a href=&quot;#新设备登录微信&quot; class=&quot;headerlink&quot; title=&quot;新设备登录微信&quot;&gt;&lt;/a&gt;新设备登录微信&lt;/h1&gt;&lt;p&gt;1.用没登录过自己微信的手机登录微信（理论双开也可以），电脑可以用模拟器（&lt;a href=&quot;http</summary>
+      
+    
+    
+    
+    
+    <category term="手机" scheme="https://blog.w6wg.cn/tags/%E6%89%8B%E6%9C%BA/"/>
+    
+    <category term="微信" scheme="https://blog.w6wg.cn/tags/%E5%BE%AE%E4%BF%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>Windows更新时间延长100年</title>
