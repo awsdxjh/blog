@@ -69,12 +69,12 @@
     <link href="https://blog.w6wg.cn/419.html"/>
     <id>https://blog.w6wg.cn/419.html</id>
     <published>2023-11-29T08:35:00.000Z</published>
-    <updated>2024-10-04T08:41:19.565Z</updated>
+    <updated>2024-10-04T08:43:24.668Z</updated>
     
-    <content type="html"><![CDATA[<p>​    软连接的功能是为某一个文件或文件夹在另外一个位置建立一个链接（相当于高级版快捷方式）<br>​    当我们需要<strong>在不同的目录</strong>，<strong>用到相同的文件</strong>时，不需要在每一个需要的目录下都复制一次文件，只要在需要用到的目录下创建一个文件或文件夹软链接即可<span id="more"></span></p><p><strong>步骤：</strong></p><p><strong>1、</strong>按键盘上的win键输入<code>cmd</code>，右键单击<code>命令提示符</code>用管理员身份运行</p><p><strong>2、</strong>在打开的命令窗口中输入<code>mklink</code>，回车</p><p><strong>3、</strong>按照给出的格式输入相应的指令<br>例如创建一个目录的软链接：</p><pre><code>mklink /j &quot;需要创建软链接的文件夹路径&quot; &quot;源文件夹路径&quot;</code></pre><p>（若失败可尝试去掉双引号，需要创建软链接的文件夹不需要自己提前创建）</p><pre><code>/j 创建一个文件夹软链接/d 创建一个文件软链接/h 创建一个硬链接</code></pre><p><strong>4、</strong>如果需要删除软链接，用下面的指令（源文件不会删除）</p><pre><code>rmdir &quot;已创建的软链接的文件或文件夹路径&quot;</code></pre>]]></content>
+    <content type="html"><![CDATA[<p>​    软连接的功能是为某一个文件或文件夹在另外一个位置建立一个链接（相当于<strong>高级版快捷方式</strong>）<br>​    当我们需要<strong>在不同的目录</strong>，<strong>用到相同的文件</strong>时，不需要在每一个需要的目录下都复制一次文件，只要在需要用到的目录下创建一个文件或文件夹软链接即可<span id="more"></span></p><p><strong>步骤：</strong></p><p><strong>1、</strong>按键盘上的win键输入<code>cmd</code>，右键单击<code>命令提示符</code>用管理员身份运行</p><p><strong>2、</strong>在打开的命令窗口中输入<code>mklink</code>，回车</p><p><strong>3、</strong>按照给出的格式输入相应的指令<br>例如创建一个目录的软链接：</p><pre><code>mklink /j &quot;需要创建软链接的文件夹路径&quot; &quot;源文件夹路径&quot;</code></pre><p>（若失败可尝试去掉双引号，需要创建软链接的文件夹不需要自己提前创建）</p><pre><code>/j 创建一个文件夹软链接/d 创建一个文件软链接/h 创建一个硬链接</code></pre><p><strong>4、</strong>如果需要删除软链接，用下面的指令（源文件不会删除）</p><pre><code>rmdir &quot;已创建的软链接的文件或文件夹路径&quot;</code></pre>]]></content>
     
     
-    <summary type="html">&lt;p&gt;​    软连接的功能是为某一个文件或文件夹在另外一个位置建立一个链接（相当于高级版快捷方式）&lt;br&gt;​    当我们需要&lt;strong&gt;在不同的目录&lt;/strong&gt;，&lt;strong&gt;用到相同的文件&lt;/strong&gt;时，不需要在每一个需要的目录下都复制一次文件，只要在需要用到的目录下创建一个文件或文件夹软链接即可</summary>
+    <summary type="html">&lt;p&gt;​    软连接的功能是为某一个文件或文件夹在另外一个位置建立一个链接（相当于&lt;strong&gt;高级版快捷方式&lt;/strong&gt;）&lt;br&gt;​    当我们需要&lt;strong&gt;在不同的目录&lt;/strong&gt;，&lt;strong&gt;用到相同的文件&lt;/strong&gt;时，不需要在每一个需要的目录下都复制一次文件，只要在需要用到的目录下创建一个文件或文件夹软链接即可</summary>
     
     
     
