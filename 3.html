@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <link rel="canonical" href="https://blog.w6wg.cn/3.html">
+    
+    
+    <title>Linux基础学习笔记 | 爱博客 | 爱忘事的小家伙</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#2e2e2e">
+    
+    
+    <meta name="keywords" content="电脑,Linux,学习">
+    <meta name="description" content="ls命令​	可以指定要查看的文件夹（目录）的内容，如果不给定参数，就查看当前工作目录的内容 ls [-a -l -h]      -a 选项，可以展示出隐藏的内容         以.开头的文件或文件夹默认被隐藏，需要-a才能显示出来     -l 选项， 以列表的形式展示内容，并展示更多细节     -h 选项，需要和-l选项搭配使用，以更加人性化的方式显示文件的大小单位  命令的选项是可以组合">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux基础学习笔记">
+<meta property="og:url" content="https://blog.w6wg.cn/3.html">
+<meta property="og:site_name" content="爱博客">
+<meta property="og:description" content="ls命令​	可以指定要查看的文件夹（目录）的内容，如果不给定参数，就查看当前工作目录的内容 ls [-a -l -h]      -a 选项，可以展示出隐藏的内容         以.开头的文件或文件夹默认被隐藏，需要-a才能显示出来     -l 选项， 以列表的形式展示内容，并展示更多细节     -h 选项，需要和-l选项搭配使用，以更加人性化的方式显示文件的大小单位  命令的选项是可以组合">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.w6wg.cn/imgs/20241008220742.png">
+<meta property="og:image" content="https://img.w6wg.cn/imgs/20241008220845.png">
+<meta property="article:published_time" content="2024-10-08T11:22:00.000Z">
+<meta property="article:modified_time" content="2024-10-08T14:15:24.940Z">
+<meta property="article:author" content="爱忘事的小家伙">
+<meta property="article:tag" content="电脑">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.w6wg.cn/imgs/20241008220742.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="爱博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="https://w6wg.cn/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/gm.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://q.qlogo.cn/g?b=qq&k=d0gGCUUYPapgLkw9VF823A&kti=Y706qwAAAAA&s=640">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">爱忘事的小家伙</h5>
+          <a href="mailto:1511942692@qq.com" title="1511942692@qq.com" class="mail">1511942692@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/guestbook"  >
+                <i class="icon icon-lg icon-comment"></i>
+                留言
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://w6wg.cn" target="_blank" >
+                <i class="icon icon-lg icon-user"></i>
+                站长主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://qm.qq.com/q/BdI1hBEHg6" target="_blank" >
+                <i class="icon icon-lg icon-qq"></i>
+                联系站长
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Linux基础学习笔记</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Linux基础学习笔记</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2024-10-08T11:22:00.000Z" itemprop="datePublished" class="page-time">
+  2024-10-08
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ls%E5%91%BD%E4%BB%A4"><span class="post-toc-number">1.</span> <span class="post-toc-text">ls命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#cd%E5%91%BD%E4%BB%A4"><span class="post-toc-number">2.</span> <span class="post-toc-text">cd命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pwd%E5%91%BD%E4%BB%A4"><span class="post-toc-number">3.</span> <span class="post-toc-text">pwd命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#touch%E5%91%BD%E4%BB%A4"><span class="post-toc-number">4.</span> <span class="post-toc-text">touch命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#cat%E5%91%BD%E4%BB%A4"><span class="post-toc-number">5.</span> <span class="post-toc-text">cat命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#more%E5%91%BD%E4%BB%A4"><span class="post-toc-number">6.</span> <span class="post-toc-text">more命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#cp%E5%91%BD%E4%BB%A4"><span class="post-toc-number">7.</span> <span class="post-toc-text">cp命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#mv%E5%91%BD%E4%BB%A4"><span class="post-toc-number">8.</span> <span class="post-toc-text">mv命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#rm%E5%91%BD%E4%BB%A4"><span class="post-toc-number">9.</span> <span class="post-toc-text">rm命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#which%E5%91%BD%E4%BB%A4"><span class="post-toc-number">10.</span> <span class="post-toc-text">which命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#find%E5%91%BD%E4%BB%A4"><span class="post-toc-number">11.</span> <span class="post-toc-text">find命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#grep%E5%91%BD%E4%BB%A4"><span class="post-toc-number">12.</span> <span class="post-toc-text">grep命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#wc%E5%91%BD%E4%BB%A4"><span class="post-toc-number">13.</span> <span class="post-toc-text">wc命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AE%A1%E9%81%93%E7%AC%A6"><span class="post-toc-number">14.</span> <span class="post-toc-text">管道符 |</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#echo%E5%91%BD%E4%BB%A4"><span class="post-toc-number">15.</span> <span class="post-toc-text">echo命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8F%8D%E5%BC%95%E5%8F%B7%E7%AC%A6"><span class="post-toc-number">16.</span> <span class="post-toc-text">反引号符 &#96;</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%87%8D%E5%AE%9A%E5%90%91%E7%AC%A6"><span class="post-toc-number">17.</span> <span class="post-toc-text">重定向符 &gt;</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#tail%E5%91%BD%E4%BB%A4"><span class="post-toc-number">18.</span> <span class="post-toc-text">tail命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#vi%E7%BC%96%E8%BE%91%E5%99%A8"><span class="post-toc-number">19.</span> <span class="post-toc-text">vi编辑器</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F"><span class="post-toc-number">19.0.1.</span> <span class="post-toc-text">运行模式</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="post-toc-number">19.0.2.</span> <span class="post-toc-text">命令模式快捷键</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%BA%95%E7%BA%BF%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F"><span class="post-toc-number">19.0.3.</span> <span class="post-toc-text">底线命令模式</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#su%E5%91%BD%E4%BB%A4"><span class="post-toc-number">20.</span> <span class="post-toc-text">su命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#exit%E5%91%BD%E4%BB%A4"><span class="post-toc-number">21.</span> <span class="post-toc-text">exit命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#sudo%E5%91%BD%E4%BB%A4"><span class="post-toc-number">22.</span> <span class="post-toc-text">sudo命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%94%A8%E6%88%B7%E3%80%81%E7%94%A8%E6%88%B7%E7%BB%84%E7%9B%B8%E5%85%B3%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="post-toc-number">23.</span> <span class="post-toc-text">用户、用户组相关管理命令</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Linux基础学习笔记"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Linux基础学习笔记</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2024-10-08 19:22:00" datetime="2024-10-08T11:22:00.000Z"  itemprop="datePublished">2024-10-08</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="ls命令"><a href="#ls命令" class="headerlink" title="ls命令"></a><strong>ls命令</strong></h3><p>​	可以指定要查看的文件夹（目录）的内容，如果不给定参数，就查看当前工作目录的内容</p>
+<pre><code>ls [-a -l -h]
+
+    -a 选项，可以展示出隐藏的内容
+        以.开头的文件或文件夹默认被隐藏，需要-a才能显示出来
+    -l 选项， 以列表的形式展示内容，并展示更多细节
+    -h 选项，需要和-l选项搭配使用，以更加人性化的方式显示文件的大小单位
+</code></pre>
+<p>命令的选项是可以组合使用的，比如：<code>ls -lah</code>，等同于<code>ls -l -a -h</code></p>
+<h3 id="cd命令"><a href="#cd命令" class="headerlink" title="cd命令"></a><strong>cd命令</strong></h3><p>（Change Directory）</p>
+<p>​	可以用来切换当前工作目录</p>
+<pre><code>cd Linux路径
+</code></pre>
+<h3 id="pwd命令"><a href="#pwd命令" class="headerlink" title="pwd命令"></a><strong>pwd命令</strong></h3><p>（Print Work Directory）</p>
+<p>​	输出当前所在工作目录</p>
+<h3 id="touch命令"><a href="#touch命令" class="headerlink" title="touch命令"></a><strong>touch命令</strong></h3><p>用于创建一个新的文件</p>
+<pre><code>touch Linux路径
+</code></pre>
+<p>参数必填，表示要创建的文件的路径，相对，绝对，特殊路径都可以使用</p>
+<p>更多用法：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_74137843/article/details/136820705">https://blog.csdn.net/qq_74137843&#x2F;article&#x2F;details&#x2F;136820705</a></p>
+<h3 id="cat命令"><a href="#cat命令" class="headerlink" title="cat命令"></a><strong>cat命令</strong></h3><p>用于查看文件内容</p>
+<pre><code>cat Linux路径
+</code></pre>
+<p>参数必填，表示要查看的文件的路径，相对，绝对，特殊路径都可以使用</p>
+<h3 id="more命令"><a href="#more命令" class="headerlink" title="more命令"></a><strong>more命令</strong></h3><p>用于查看文件内容，可翻页查看</p>
+<pre><code>more linux路径
+</code></pre>
+<p>参数必填，表示要查看的文件的路径，相对，绝对，特殊路径都可以使用</p>
+<p>使用空格进行翻页，使用q退出查看</p>
+<h3 id="cp命令"><a href="#cp命令" class="headerlink" title="cp命令"></a><strong>cp命令</strong></h3><p>用于复制文件或文件夹</p>
+<pre><code>cp -r 参数1 参数2
+
+    -r 选项，可选，用于复制文件夹使用，表示递归
+    参数1，Linux路径，表示被复制的文件或文件夹
+    参数2，Linux路径，表示要复制去的地方
+</code></pre>
+<h3 id="mv命令"><a href="#mv命令" class="headerlink" title="mv命令"></a><strong>mv命令</strong></h3><p>用于移动或重命名文件或文件夹</p>
+<pre><code>mv 参数1 参数2
+
+    参数1，Linux路径，表示被移动的文件或文件夹
+    参数2，Linux路径，表示要去的地方，如果目标不存在，则进行改名
+</code></pre>
+<h3 id="rm命令"><a href="#rm命令" class="headerlink" title="rm命令"></a><strong>rm命令</strong></h3><p>用于删除文件或文件夹</p>
+<pre><code>rm [-r -f] 参数1 参数2 ...... 参数N
+
+    -r 选项，可选，文件夹删除
+    -f 选项，可选，用于强制删除（不提示，一般用于root用户）
+    参数，表示被删除的文件或文件夹路径，支持多个，空格隔开
+    参数也支持通配符*，用作模糊匹配
+</code></pre>
+<h3 id="which命令"><a href="#which命令" class="headerlink" title="which命令"></a><strong>which命令</strong></h3><p>查找命令的程序文件</p>
+<pre><code>which 要查找的命令
+</code></pre>
+<p>无需选项，只要参数表示查找那个命令</p>
+<h3 id="find命令"><a href="#find命令" class="headerlink" title="find命令"></a><strong>find命令</strong></h3><p>用于查找指定文件</p>
+<pre><code>按文件名查找
+    find 起始路径 -name &quot;被查找文件名&quot;
+        支持通配符
+按文件大小查找
+    find 起始路径 -size +|-n[k/M/G]
+        +、-表示大于和小于
+        n表示大小数字
+        k/M/G表示大小单位，k（小写字母）表示kb，M表示MB，G表示GB
+</code></pre>
+<h3 id="grep命令"><a href="#grep命令" class="headerlink" title="grep命令"></a><strong>grep命令</strong></h3><p>从文件中通过关键词过滤文件行</p>
+<pre><code>grep -n 关键字 文件路径
+
+    -n 选项，可选，表示在结果中显示匹配的行的行号
+    参数，关键字，必填，表示过滤的关键字，建议使用&quot;&quot;将关键字包围起来
+    参数，文件路径，必填，表示要过滤内容的文件路径，可作为管道符&quot;|&quot;的输入
+</code></pre>
+<h3 id="wc命令"><a href="#wc命令" class="headerlink" title="wc命令"></a><strong>wc命令</strong></h3><p>命令统计文件的行数、单词数量、字节数、字符数等</p>
+<pre><code>wc [-c -m -l -w] 文件路径
+
+    不带选项默认统计：行数、单词数、字节数
+    -c 字节数、-m 字符数、-l 行数、-w 单词数
+    参数，被统计的文件路径，可作为管道符的输入
+</code></pre>
+<h3 id="管道符"><a href="#管道符" class="headerlink" title="管道符 |"></a><strong>管道符 |</strong></h3><p>将管道符左边命令的结果，作为右边命令的输入</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43768851/article/details/124380356">https://blog.csdn.net/qq_43768851&#x2F;article&#x2F;details&#x2F;124380356</a></p>
+<h3 id="echo命令"><a href="#echo命令" class="headerlink" title="echo命令"></a><strong>echo命令</strong></h3><p>可以使用echo命令在命令行内输出指定内容</p>
+<pre><code>echo 输出的内容
+</code></pre>
+<p>无需选项只有一个参数，表示要输出的内容，复杂内容可以用””包围</p>
+<h3 id="反引号符"><a href="#反引号符" class="headerlink" title="反引号符 &#96;"></a><strong>反引号符 &#96;</strong></h3><p>被包围的内容，会被作为命令执行，而非普通字符</p>
+<p>例如：</p>
+<pre><code>echo pwd
+</code></pre>
+<p>输出的是pwd三个字符</p>
+<p>而</p>
+<pre><code>echo `pwd`
+</code></pre>
+<p>输出的是执行<a href="#pwd%E5%91%BD%E4%BB%A4">pwd命令</a>输出的内容</p>
+<h3 id="重定向符"><a href="#重定向符" class="headerlink" title="重定向符 &gt;"></a><strong>重定向符 &gt;</strong></h3><pre><code>&gt;，将左侧命令的结果，覆盖写入到符号右侧指定文件中
+&gt;&gt;，将左侧命令的结果，追加写入到符号右侧指定文件中
+</code></pre>
+<p>例如：</p>
+<pre><code>ls &gt; test.txt
+</code></pre>
+<h3 id="tail命令"><a href="#tail命令" class="headerlink" title="tail命令"></a><strong>tail命令</strong></h3><p>查看文件尾部内容，并可以持续跟踪</p>
+<pre><code>tail [-f -num] Linux路径
+
+    -f 持续跟踪
+    -num 启动的时候查看尾部多少行，默认10
+        例如：tail -20 test.txt
+    Linux路径，表示被查看的文件
+</code></pre>
+<h3 id="vi编辑器"><a href="#vi编辑器" class="headerlink" title="vi编辑器"></a><strong>vi编辑器</strong></h3><p>vi\vim编辑器，就是命令模式下的文本编辑器，用来编辑文件</p>
+<p>vim是vi的升级版，一般用于vim即可，包含全部vi功能</p>
+<pre><code>vi 文件路径
+vim 文件路径
+</code></pre>
+<h5 id="运行模式"><a href="#运行模式" class="headerlink" title="运行模式"></a><strong>运行模式</strong></h5><p>​	命令模式，默认的模式，可以通过键盘快捷键控制文件内容</p>
+<p>​	输入模式，通过命令模式进入，可以输入内容进行编辑，按esc退回命令模式</p>
+<p>​	底线命令模式，通过命令模式进入，可以对文件进行保存、关闭等操作</p>
+<h5 id="命令模式快捷键"><a href="#命令模式快捷键" class="headerlink" title="命令模式快捷键"></a><strong>命令模式快捷键</strong></h5><table>
+<thead>
+<tr>
+<th align="center">模式</th>
+<th align="center">命令</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">命令模式</td>
+<td align="center"><code>i</code></td>
+<td align="center">在当前光标位置进入<code>输入模式</code></td>
+</tr>
+<tr>
+<td align="center">命令模式</td>
+<td align="center"><code>a</code></td>
+<td align="center">在当前光标位置 之后 进入<code>输入模式</code></td>
+</tr>
+<tr>
+<td align="center">命令模式</td>
+<td align="center"><code>I</code>（大写<code>i</code>）</td>
+<td align="center">在当前行的开头，进入<code>输入模式</code></td>
+</tr>
+<tr>
+<td align="center">命令模式</td>
+<td align="center"><code>A</code></td>
+<td align="center">在当前行的结尾，进入<code>输入模式</code></td>
+</tr>
+<tr>
+<td align="center">命令模式</td>
+<td align="center"><code>o</code></td>
+<td align="center">在当前光标的下一行进入<code>输入模式</code></td>
+</tr>
+<tr>
+<td align="center">命令模式</td>
+<td align="center"><code>O</code>（大写<code>o</code>）</td>
+<td align="center">在当前光标的上一行进入<code>输入模式</code></td>
+</tr>
+<tr>
+<td align="center">输入模式</td>
+<td align="center"><code>Esc</code></td>
+<td align="center">任何情况下按<code>Esc</code>键都能回到<code>命令模式</code></td>
+</tr>
+<tr>
+<td align="center">命令模式</td>
+<td align="center">键盘上、键盘<code>k</code>键</td>
+<td align="center">向上移动光标</td>
+</tr>
+<tr>
+<td align="center">命令模式</td>
+<td align="center">键盘下、键盘<code>j</code>键</td>
+<td align="center">向下移动光标</td>
+</tr>
+<tr>
+<td align="center">命令模式</td>
+<td align="center">键盘左、键盘<code>h</code>键</td>
+<td align="center">向左移动光标</td>
+</tr>
+<tr>
+<td align="center">命令模式</td>
+<td align="center">键盘右、键盘<code>l</code>键</td>
+<td align="center">向右移动光标</td>
+</tr>
+<tr>
+<td align="center">命令模式</td>
+<td align="center">数字<code>0</code></td>
+<td align="center">移动光标到当前行的开头</td>
+</tr>
+<tr>
+<td align="center">命令模式</td>
+<td align="center"><code>$</code></td>
+<td align="center">移动光标到当前行的结尾</td>
+</tr>
+<tr>
+<td align="center">命令模式</td>
+<td align="center">pageup(<code>PgUp</code>)</td>
+<td align="center">向上翻页</td>
+</tr>
+<tr>
+<td align="center">命令模式</td>
+<td align="center">pangdown(<code>PgDn</code>)</td>
+<td align="center">向下翻页</td>
+</tr>
+<tr>
+<td align="center">命令模式</td>
+<td align="center"><code>/</code></td>
+<td align="center">进入搜索模式</td>
+</tr>
+<tr>
+<td align="center">命令模式</td>
+<td align="center"><code>n</code></td>
+<td align="center">向上继续搜索</td>
+</tr>
+<tr>
+<td align="center">命令模式</td>
+<td align="center"><code>N</code></td>
+<td align="center">向上继续搜索</td>
+</tr>
+<tr>
+<td align="center">命令模式</td>
+<td align="center"><code>dd</code></td>
+<td align="center">删除光标所在行的内容</td>
+</tr>
+<tr>
+<td align="center">命令模式</td>
+<td align="center"><code>ndd</code></td>
+<td align="center">n是数字，表示删除当前光标向下n行</td>
+</tr>
+<tr>
+<td align="center">命令模式</td>
+<td align="center"><code>yy</code></td>
+<td align="center">复制当前行</td>
+</tr>
+<tr>
+<td align="center">命令模式</td>
+<td align="center"><code>nyy</code></td>
+<td align="center">n是数字，复制当前行和下面的行</td>
+</tr>
+<tr>
+<td align="center">命令模式</td>
+<td align="center"><code>p</code></td>
+<td align="center">粘贴复制的内容</td>
+</tr>
+<tr>
+<td align="center">命令模式</td>
+<td align="center"><code>u</code></td>
+<td align="center">撤销修改</td>
+</tr>
+<tr>
+<td align="center">命令模式</td>
+<td align="center"><code>ctrl + r</code></td>
+<td align="center">反向撤销修改</td>
+</tr>
+<tr>
+<td align="center">命令模式</td>
+<td align="center"><code>gg</code></td>
+<td align="center">跳到首行</td>
+</tr>
+<tr>
+<td align="center">命令模式</td>
+<td align="center"><code>G</code></td>
+<td align="center">跳到行尾</td>
+</tr>
+<tr>
+<td align="center">命令模式</td>
+<td align="center"><code>dG</code></td>
+<td align="center">从当前行开始，向下全部删除</td>
+</tr>
+<tr>
+<td align="center">命令模式</td>
+<td align="center"><code>dgg</code></td>
+<td align="center">从当前行开始，向上全部删除</td>
+</tr>
+<tr>
+<td align="center">命令模式</td>
+<td align="center"><code>d$</code></td>
+<td align="center">从当前光标开始，删除到本行的结尾</td>
+</tr>
+<tr>
+<td align="center">命令模式</td>
+<td align="center"><code>d0</code></td>
+<td align="center">从当前光标开始，删除到本行的开头</td>
+</tr>
+</tbody></table>
+<h5 id="底线命令模式"><a href="#底线命令模式" class="headerlink" title="底线命令模式"></a><strong>底线命令模式</strong></h5><p>在命令模式内，输入英文<code>:</code>，即可进入底线命令模式，支持如下命令：</p>
+<table>
+<thead>
+<tr>
+<th align="center">模式</th>
+<th align="center">命令</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">底线命令模式</td>
+<td align="center"><code>:wq</code></td>
+<td align="center">保存并退出</td>
+</tr>
+<tr>
+<td align="center">底线命令模式</td>
+<td align="center"><code>:q</code></td>
+<td align="center">仅退出</td>
+</tr>
+<tr>
+<td align="center">底线命令模式</td>
+<td align="center"><code>:q!</code></td>
+<td align="center">强制退出</td>
+</tr>
+<tr>
+<td align="center">底线命令模式</td>
+<td align="center"><code>:w</code></td>
+<td align="center">仅保存</td>
+</tr>
+<tr>
+<td align="center">底线命令模式</td>
+<td align="center"><code>:set nu</code></td>
+<td align="center">显示行号</td>
+</tr>
+<tr>
+<td align="center">底线命令模式</td>
+<td align="center"><code>:set paste</code></td>
+<td align="center">设置粘贴模式</td>
+</tr>
+</tbody></table>
+<h3 id="su命令"><a href="#su命令" class="headerlink" title="su命令"></a><strong>su命令</strong></h3><p>可以切换用户</p>
+<pre><code>su - 用户名
+
+- 表示切换后加载环境变量，建议带上
+用户名可以省略，省略默认切换到root
+</code></pre>
+<h3 id="exit命令"><a href="#exit命令" class="headerlink" title="exit命令"></a><strong>exit命令</strong></h3><p>退出当前登录的用户</p>
+<h3 id="sudo命令"><a href="#sudo命令" class="headerlink" title="sudo命令"></a><strong>sudo命令</strong></h3><p>可以让一条普通命令带有root权限</p>
+<pre><code>sudo 其他命令
+</code></pre>
+<p>执行<code>sudo</code>命令之前需要以root用户执行<code>visudo</code>命令，会自动通过vi编辑器打开&#x2F;etc&#x2F;sudoers，在文件的末尾添加<code>你的用户名 ALL=(ALL)	NOPASSWD:ALL</code>后方可让普通用户有<code>sudo</code>命令的权限，<code>NOPASSWD</code>表示执行<code>sudo</code>命令时不需要输入密码，若需要输密码就将<code>NOPASSWD:</code>删除</p>
+<h3 id="用户、用户组相关管理命令"><a href="#用户、用户组相关管理命令" class="headerlink" title="用户、用户组相关管理命令"></a><strong>用户、用户组相关管理命令</strong></h3><p><code>groupadd</code>添加组、<code>groupdel</code>删除组</p>
+<pre><code>groupadd 用户组名
+groupdel 用户组名
+</code></pre>
+<p><code>useradd</code>添加用户、<code>userdel</code>删除用户</p>
+<pre><code>useradd [-g -d] 用户名
+    -g 选项，指定用户的组，如果不指定，会创建同名组并自动加入，指定-g需要组已经存在，如以存在同名组，必须使用-g
+    -d 选项，指定用户HOME路径，如果不指定，HOME目录默认在：/home/用户名
+    例如：
+        useradd test1 -g group1 -d /home/test
+
+userdel -r 用户名
+    -r 选项，删除用户的HOME路径，如果不指定，HOME目录不会删除（HOME目录默认在：/home/用户名）
+</code></pre>
+<p><code>usermod</code>修改用户组、<code>id</code>命令查看用户信息</p>
+<pre><code>usermod -aG 用户组 用户名
+    将指定用户加入指定用户组
+    
+id 用户名
+    参数，用户名，被查看的用户，如果不指定用户名则查看当前登录用户
+</code></pre>
+<p><code>getent passwd</code>查看系统全部用户信息</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img.w6wg.cn/imgs/20241008220742.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<pre><code>共有7份信息，分别是：
+    用户名:密码(显示为x):用户ID:组ID:描述信息（空）:HOME目录:执行终端（默认bash）
+</code></pre>
+<p><code>getent group</code>查看系统全部组信息</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img.w6wg.cn/imgs/20241008220845.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<pre><code>包含3份信息，分别是：
+    组名称:组认证（显示为x）:组ID:
+</code></pre>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2024-10-08T14:15:24.940Z" itemprop="dateUpdated">2024-10-08 22:15:24</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://blog.w6wg.cn">
+            <img src="https://q.qlogo.cn/g?b=qq&k=d0gGCUUYPapgLkw9VF823A&kti=Y706qwAAAAA&s=640" alt="爱忘事的小家伙">
+            爱忘事的小家伙
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%94%B5%E8%84%91/" rel="tag">电脑</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.w6wg.cn/3.html&title=《Linux基础学习笔记》 — 爱博客&pic=https://q.qlogo.cn/g?b=qq&k=d0gGCUUYPapgLkw9VF823A&kti=Y706qwAAAAA&s=640" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.w6wg.cn/3.html&title=《Linux基础学习笔记》 — 爱博客&source=一个乐于分享的博客网站！" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.w6wg.cn/3.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Linux基础学习笔记》 — 爱博客&url=https://blog.w6wg.cn/3.html&via=https://blog.w6wg.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.w6wg.cn/3.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">微信清空性别和地区</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+<!--  -->
+    
+
+
+
+
+
+
+
+
+
+
+
+<head>
+    <!-- ... -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@waline/client@v3/dist/waline.css"
+    />
+    <!-- ... -->
+  </head>
+  <body>
+    <!-- ... -->
+    <div id="waline"></div>
+    <script type="module">
+      import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+  
+      init({
+        el: '#waline',
+        serverURL: 'https://cm.w6wg.cn',
+      });
+    </script>
+  </body>
+  
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        
+
+<footer class="footer">
+    
+    <div class="top">
+        
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        您是本站第 <span id="busuanzi_value_site_uv"></span> 位访客
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>爱忘事的小家伙 &copy; 2021 - 2024</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank"><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37162302000368"> 鲁公网安备 37162302000368号</a></a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.w6wg.cn/3.html&title=《Linux基础学习笔记》 — 爱博客&pic=https://q.qlogo.cn/g?b=qq&k=d0gGCUUYPapgLkw9VF823A&kti=Y706qwAAAAA&s=640" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.w6wg.cn/3.html&title=《Linux基础学习笔记》 — 爱博客&source=一个乐于分享的博客网站！" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.w6wg.cn/3.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Linux基础学习笔记》 — 爱博客&url=https://blog.w6wg.cn/3.html&via=https://blog.w6wg.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.w6wg.cn/3.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABuklEQVR42u3aQW7DMAwEQP//0+kDWjtL0WJtYHQKAsca5UBIKx5HPD6X4/cz+duOHQMXF7fNrVLOJqsuJnn/H0vCxcUd5J5VjOSZhHJdyBIDLi7uW7gJPS9kuLi4b+fmC0gOP7i4uM/kJkeX60NLgh49q+Hi4ja4eUq57/OWfBcXF3eJ+ymOtUAkj1S+zI6LizvC7UceyZLWNkanT+Li4m7mVqdJoo21i5PoL8DFxR3ndmrhpzEKAQ0uLu4gNwlB+qHqDUEMLi7uv3LX0NWDULW04eLiznOrRa3awLHWnHGa3+Di4m7j3hVwJKzkt8mMuLi4u7k7WqOS6HPx4hYXF3eEW912dL7pXNPi4uI+h5tvX6pNFdXj1nHX9Li4uDE331J0rkg7VzLRWQ0XF3cDt9DjGXRJrV2yRocfXFzcQW4ShfQLU2frg4uLO8PtTJ83d1aDkvL/iouLeyu3Wlw6r07o+QYLFxd3N3dtm7IWd/YvV3BxcSe5nYmTtqrOxggXF/eN3E7JK7df4OLiPpKbt2Uvtltd1y5cXNxBbj8kTZaXtI9/KY64uLgj3Gop6dCvC9/aXLi4uLdyfwBKWuIxcwNYtAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
