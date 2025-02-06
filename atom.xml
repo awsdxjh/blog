@@ -6,7 +6,7 @@
   <link href="https://blog.w6wg.cn/atom.xml" rel="self"/>
   
   <link href="https://blog.w6wg.cn/"/>
-  <updated>2025-02-06T11:09:31.079Z</updated>
+  <updated>2025-02-06T11:12:59.929Z</updated>
   <id>https://blog.w6wg.cn/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>【持续更新】Windows系统实用bat命令大全</title>
+    <title>小米8青春版改串2</title>
     <link href="https://blog.w6wg.cn/5.html"/>
     <id>https://blog.w6wg.cn/5.html</id>
     <published>2025-02-06T10:43:00.000Z</published>
-    <updated>2025-02-06T11:09:31.079Z</updated>
+    <updated>2025-02-06T11:12:59.929Z</updated>
     
     <content type="html"><![CDATA[<p>1.解BL</p><p>2.root</p><p>3.多系统工具箱备份全字库基带</p><p>4.打开adb开端口命令</p><p>(<br>    1.adb shell<br>    2.su（手机同意root授权）<br>    3.setprop sys.usb.config diag,adb（英文逗号没错）<br>)<br>5.QPST备份qcn，勾选双卡</p><p>6.IMEI Converter转换卡一IMEI，Winhex打开备份的qcn，十六进制查找转换的IMEI，一行改全0</p><p>7.进fastboot，刷工程包，等开机</p><p>8.进fastboot，星海SVIP清空基带，重启手机</p><p>9.星海SVIP改串2，重启手机</p><p>10.进fastboot，刷回原系统</p>]]></content>
     
