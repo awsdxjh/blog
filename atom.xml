@@ -6,7 +6,7 @@
   <link href="https://blog.w6wg.cn/atom.xml" rel="self"/>
   
   <link href="https://blog.w6wg.cn/"/>
-  <updated>2024-10-12T03:31:22.916Z</updated>
+  <updated>2025-02-06T10:44:06.914Z</updated>
   <id>https://blog.w6wg.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【持续更新】Windows系统实用bat命令大全</title>
+    <link href="https://blog.w6wg.cn/4.html"/>
+    <id>https://blog.w6wg.cn/4.html</id>
+    <published>2025-02-06T10:43:00.000Z</published>
+    <updated>2025-02-06T10:44:06.914Z</updated>
+    
+    <content type="html"><![CDATA[<p>1.解BL<br>2. root<br>3.多系统工具箱备份全字库基带<br>4.打开adb开端口命令<br>(<br>1.adb shell<br>2.su（手机同意root授权）<br>3.setprop sys.usb.config diag,adb（英文逗号没错）<br>)<br>5.QPST备份qcn，勾选双卡<br>6.IMEI Converter转换卡一IMEI，Winhex打开备份的qcn，十六进制查找转换的IMEI，一行改全0<br>7.进fastboot，刷工程包，等开机<br>8.进fastboot，星海SVIP清空基带，重启手机<br>9.星海SVIP改串2，重启手机<br>10.进fastboot，刷回原系统</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;1.解BL&lt;br&gt;2. root&lt;br&gt;3.多系统工具箱备份全字库基带&lt;br&gt;4.打开adb开端口命令&lt;br&gt;(&lt;br&gt;1.adb shell&lt;br&gt;2.su（手机同意root授权）&lt;br&gt;3.setprop sys.usb.config diag,adb（英文逗号没错）&lt;</summary>
+      
+    
+    
+    
+    
+    <category term="手机" scheme="https://blog.w6wg.cn/tags/%E6%89%8B%E6%9C%BA/"/>
+    
+    <category term="小米" scheme="https://blog.w6wg.cn/tags/%E5%B0%8F%E7%B1%B3/"/>
+    
+    <category term="改串" scheme="https://blog.w6wg.cn/tags/%E6%94%B9%E4%B8%B2/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux基础学习笔记</title>
