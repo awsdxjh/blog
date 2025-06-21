@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>安卓手机自动发送ipv6地址到企业微信</title>
+    <link href="/6.html"/>
+    <url>/6.html</url>
+    
+    <content type="html"><![CDATA[<div class="note note-success">            <p><strong>为什么要自动发送ipv6？</strong><br>    由于公网ipv4资源短缺，不好申请，而ipv6几乎都有，与ipv4一样可以公网访问，但ipv6并不是固定的，所以需要自动发送新ipv6地址</p>          </div><h1 id="方式一、无root使用"><a href="#方式一、无root使用" class="headerlink" title="方式一、无root使用"></a>方式一、无root使用</h1><ol><li>使用<a href="https://www.coolapk.com/apk/com.cozylife.smshelper">双卡助手</a>软件</li><li>使用maccrodroid软件，教程：<a href="https://www.coolapk.com/feed/47952314?shareKey=M2UzYTE2ODU2OWY4NjdkMGRjODA~&shareUid=3557589&shareFrom=com.coolapk.market_15.0.3">查看链接</a></li></ol><h1 id="方式二、有root-magisk使用"><a href="#方式二、有root-magisk使用" class="headerlink" title="方式二、有root+magisk使用"></a>方式二、有root+magisk使用</h1><h2 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a><strong>方法一：</strong></h2><p>​使用ddns-go模块，ipv6地址更新时自动通知，但是好像需要有自己的域名才可以推送</p><h2 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a><strong>方法二：</strong></h2><h3 id="1-获取企业微信webhook"><a href="#1-获取企业微信webhook" class="headerlink" title="1. 获取企业微信webhook"></a>1. 获取企业微信webhook</h3><p>​注册一个企业微信，全新创建企业-其他-创建，创建完成后消息页面有一个全员标志的群，进去点右上角，选择群机器人-添加机器人-新建-添加，有一个Webhook地址，复制下来</p><h3 id="2-下载文件"><a href="#2-下载文件" class="headerlink" title="2. 下载文件"></a><strong>2. 下载文件</strong></h3><p>​本脚本作用是每隔30分钟检查一次ipv6地址，如果ip地址不相同则发送ipv6地址到企业微信</p><p>​<a href="https://www.123912.com/s/mzurVv-cJ963">https://www.123912.com/s/mzurVv-cJ963</a> 提取码:<code>nPoE</code></p><p>​将两个文件放到<code>/data/adb/service.d</code>目录中，用<a href="https://mt2.cn/">MT文件管理器</a>将两个文件权限都改成777</p><h3 id="3-编辑文件send-ip-0-sh和send-ip-1-sh"><a href="#3-编辑文件send-ip-0-sh和send-ip-1-sh" class="headerlink" title="3. 编辑文件send_ip_0.sh和send_ip_1.sh"></a><strong>3. 编辑文件send_ip_0.sh和send_ip_1.sh</strong></h3><p>​两个文件都需要更改以下两处</p><p>​第24行双引号中填入步骤一中复制的Webhook地址</p><p><img src="https://img.w6wg.cn/Screenshot_2025-02-14-22-01-34-464_bin.mt.plus.canary.png"></p><p>​第4行双引号中填入日志文件保存的路径</p><p><img src="https://img.w6wg.cn/Screenshot_2025-02-14-22-06-07-247_bin.mt.plus.canary.png"></p><p>执行脚本<code>send_ip_0.sh</code>，勾选使用root执行，如果企业微信收到信息就表示成功了，接下来配置定时执行</p><h3 id="4-定时执行"><a href="#4-定时执行" class="headerlink" title="4. 定时执行"></a><strong>4. 定时执行</strong></h3><p>​创建目录<code>/system/cron/crontab</code>，在<code>crontab</code>文件夹中新建<code>root</code>文件，里面填写以下代码，表示每半小时运行一次，也可自己更改时间，<a href="https://cron.ciding.cc/">Cron - 在线Cron表达式生成器</a></p><pre><code class="hljs">*/30 * * * */data/adb/service.d/send_ip_0.sh</code></pre><p>​配置完后执行<code>send_ip_1.sh</code>脚本，不然不会定时执行</p><p>​配置完后执行<code>send_ip_1.sh</code>脚本，不然不会定时执行</p><p>​配置完后执行<code>send_ip_1.sh</code>脚本，不然不会定时执行</p><h3 id="5-手机锁屏休眠问题"><a href="#5-手机锁屏休眠问题" class="headerlink" title="5. 手机锁屏休眠问题"></a><strong>5. 手机锁屏休眠问题</strong></h3><p>​有些手机锁屏后一段时间会自动休眠，导致脚本不会定时执行</p><p>​关于如何知道锁屏后有没有休眠，以上步骤配置完后等待一段时间或一晚上，查看日志文件每隔半小时是否有日志输出，如果有就表示手机不会休眠或没有影响，如果没有就需要开启唤醒锁，在<code>send_ip_1.sh</code>文件中将第22行前面的<code>#</code>删除，再执行此脚本，手机锁屏后就不会休眠</p><p><img src="https://img.w6wg.cn/Screenshot_2025-02-14-22-11-35-453_bin.mt.plus.canary.png"></p><h3 id="6-其它"><a href="#6-其它" class="headerlink" title="6. 其它"></a><strong>6. 其它</strong></h3><p>​其它地方也可以自己看着改，都标注了注释，不过鉴于大佬不看小白不会，建议还是别乱动[doge]</p><h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a><strong>其它</strong></h3><p>​关于开机自动开启usb调试和usb安全模式，可以直接加在<code>send_ip_1.sh</code>文件<code>#!/system/bin/sh</code>下方</p><pre><code class="hljs">until [ $(getprop sys.boot_completed) -eq 1 ] ; do  sleep 5donesettings put global adb_enabled 1setprop persist.security.adbinput 1</code></pre><h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><p><a href="https://www.coolapk.com/feed/42982745?shareKey=Zjg2Mjk5NzJiYTc2NjdhZjVmYjE~&shareUid=3557589&shareFrom=com.coolapk.market_15.0.3"><strong>教程-安卓Root使用crontab定时任务执行sh脚本或shell命令</strong></a></p><p><a href="https://www.coolapk.com/feed/42956384?shareKey=NmM2YjczNDAwOTRhNjdhZjYwZWE~&shareUid=3557589&shareFrom=com.coolapk.market_15.0.3"><strong>安卓Root默认开机启用adb调试和无线调试固定5555端口</strong></a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>手机</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>安卓</tag>
+      
+      <tag>root</tag>
+      
+      <tag>Magisk</tag>
+      
+      <tag>ipv6</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>小米8青春版改串2</title>
+    <link href="/5.html"/>
+    <url>/5.html</url>
+    
+    <content type="html"><![CDATA[<p>1.解BL</p><p>2.root</p><p>3.多系统工具箱备份全字库基带</p><p>4.打开adb开端口命令</p><p>(<br>    1.adb shell<br>    2.su（手机同意root授权）<br>    3.setprop sys.usb.config diag,adb（英文逗号没错）<br>)<br>5.打开QPST，备份qcn，勾选双卡</p><p>6.IMEI Converter转换卡一IMEI，Winhex打开备份的qcn，十六进制查找转换的IMEI，一行改全0</p><p>7.进fastboot，刷工程包，等开机</p><p>8.进fastboot，星海SVIP高通选项，选中高通擦除基带，一键执行，重启手机</p><p>9.星海SVIP高通选项，选中写入QCN选择第6步更改的qcn文件，刷入后手机自动重启，重启后选中写串号2，更改串2，一键执行，重启手机</p><p>10.进fastboot，刷回原系统</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>手机</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>手机</tag>
+      
+      <tag>小米</tag>
+      
+      <tag>小米8青春版</tag>
+      
+      <tag>改串</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Linux基础学习笔记</title>
+    <link href="/3.html"/>
+    <url>/3.html</url>
+    
+    <content type="html"><![CDATA[<p>学习视频：<a href="https://www.bilibili.com/video/BV1n84y1i7td?vd_source=5a1f6fb035cb85c05e8121d57952f41b">黑马程序员新版Linux零基础快速入门到精通，全涵盖linux系统知识、常用软件环境部署、Shell脚本、云平台实践、大数据集群项目实战等</a></p><h3 id="ls命令"><a href="#ls命令" class="headerlink" title="ls命令"></a><strong>ls命令</strong></h3><p>​可以指定要查看的文件夹（目录）的内容，如果不给定参数，就查看当前工作目录的内容</p><pre><code class="hljs">ls [-a -l -h]    -a 选项，可选，可以展示出隐藏的内容        以.开头的文件或文件夹默认被隐藏，需要-a才能显示出来    -l 选项，可选，以列表的形式展示内容，并展示更多细节    -h 选项，可选，需要和-l选项搭配使用，以更加人性化的方式显示文件的大小单位</code></pre><p>命令的选项是可以组合使用的，比如：<code>ls -lah</code>，等同于<code>ls -l -a -h</code></p><h3 id="cd命令"><a href="#cd命令" class="headerlink" title="cd命令"></a><strong>cd命令</strong></h3><p>（Change Directory）</p><p>​可以用来切换当前工作目录</p><pre><code class="hljs">cd Linux路径</code></pre><ul><li><h4 id="进入用户目录"><a href="#进入用户目录" class="headerlink" title="进入用户目录"></a><strong>进入用户目录</strong></h4><p>用户目录在<code>/home/用户名</code>中，用户目录也可以用<code>~</code>表示（<code>Esc</code>键下方）</p><pre><code class="hljs">cd /home/用户名等同于cd ~</code></pre></li></ul><h3 id="pwd命令"><a href="#pwd命令" class="headerlink" title="pwd命令"></a><strong>pwd命令</strong></h3><p>（Print Work Directory）</p><p>​输出当前所在工作目录</p><h3 id="touch命令"><a href="#touch命令" class="headerlink" title="touch命令"></a><strong>touch命令</strong></h3><p>用于创建一个新的文件</p><pre><code class="hljs">touch Linux路径</code></pre><p>参数必填，表示要创建的文件的路径，相对，绝对，特殊路径都可以使用</p><p>更多用法：<a href="https://blog.csdn.net/qq_74137843/article/details/136820705">https://blog.csdn.net/qq_74137843&#x2F;article&#x2F;details&#x2F;136820705</a></p><h3 id="cat命令"><a href="#cat命令" class="headerlink" title="cat命令"></a><strong>cat命令</strong></h3><p>用于查看文件内容</p><pre><code class="hljs">cat Linux路径</code></pre><p>参数必填，表示要查看的文件的路径，相对，绝对，特殊路径都可以使用</p><h3 id="more命令"><a href="#more命令" class="headerlink" title="more命令"></a><strong>more命令</strong></h3><p>用于查看文件内容，可翻页查看</p><pre><code class="hljs">more linux路径</code></pre><p>参数必填，表示要查看的文件的路径，相对，绝对，特殊路径都可以使用</p><p>使用空格进行翻页，使用q退出查看</p><h3 id="cp命令"><a href="#cp命令" class="headerlink" title="cp命令"></a><strong>cp命令</strong></h3><p>用于复制文件或文件夹</p><pre><code class="hljs">cp -r 参数1 参数2    -r 选项，可选，用于复制文件夹使用，表示递归    参数1，Linux路径，表示被复制的文件或文件夹    参数2，Linux路径，表示要复制去的地方</code></pre><h3 id="mv命令"><a href="#mv命令" class="headerlink" title="mv命令"></a><strong>mv命令</strong></h3><p>用于移动或重命名文件或文件夹</p><pre><code class="hljs">mv 参数1 参数2    参数1，Linux路径，表示被移动的文件或文件夹    参数2，Linux路径，表示要去的地方，如果目标不存在，则进行改名</code></pre><h3 id="虚拟机快照"><a href="#虚拟机快照" class="headerlink" title="虚拟机快照"></a><strong>虚拟机快照</strong></h3><p>​拍摄快照前建议将虚拟机关机，在虚拟机主页选项栏中选择虚拟机-拍摄快照</p><p>​拍摄虚拟机快照是在当前虚拟机状态下创建一个还原点，当遇到虚拟机损坏打不开等情况下，选择恢复快照就会回到拍摄虚拟机快照时的虚拟机状态</p><h3 id="rm命令"><a href="#rm命令" class="headerlink" title="rm命令"></a><strong>rm命令</strong></h3><p>用于删除文件或文件夹</p><pre><code class="hljs">rm [-r -f] 参数1 参数2 ...... 参数N    -r 选项，可选，文件夹删除    -f 选项，可选，用于强制删除（不提示，一般用于root用户）    参数，表示被删除的文件或文件夹路径，支持多个，空格隔开    参数也支持通配符*，用作模糊匹配</code></pre><ul><li><h4 id="删库跑路命令"><a href="#删库跑路命令" class="headerlink" title="删库跑路命令"></a><strong>删库跑路命令</strong></h4></li></ul><p>需要root，作用是删除根目录下所有文件，不可恢复，虚拟机将完全损坏，执行前建议创建虚拟机快照</p><blockquote><p>rm -rf &#x2F;*</p></blockquote><h3 id="which命令"><a href="#which命令" class="headerlink" title="which命令"></a><strong>which命令</strong></h3><p>查找命令的程序文件</p><pre><code class="hljs">which 要查找的命令</code></pre><p>无需选项，只要参数表示查找那个命令</p><h3 id="find命令"><a href="#find命令" class="headerlink" title="find命令"></a><strong>find命令</strong></h3><p>用于查找指定文件</p><pre><code class="hljs">按文件名查找    find 起始路径 -name &quot;被查找文件名&quot;        支持通配符按文件大小查找    find 起始路径 -size +|-n[k/M/G]        +、-表示大于和小于        n表示大小数字        k/M/G表示大小单位，k（小写字母）表示kb，M表示MB，G表示GB</code></pre><h3 id="grep命令"><a href="#grep命令" class="headerlink" title="grep命令"></a><strong>grep命令</strong></h3><p>从文件中通过关键词过滤文件行</p><pre><code class="hljs">grep -n 关键字 文件路径    -n 选项，可选，表示在结果中显示匹配的行的行号    参数，关键字，必填，表示过滤的关键字，建议使用&quot;&quot;将关键字包围起来    参数，文件路径，必填，表示要过滤内容的文件路径，可作为管道符&quot;|&quot;的输入</code></pre><h3 id="wc命令"><a href="#wc命令" class="headerlink" title="wc命令"></a><strong>wc命令</strong></h3><p>命令统计文件的行数、单词数量、字节数、字符数等</p><pre><code class="hljs">wc [-c -m -l -w] 文件路径    不带选项默认统计：行数、单词数、字节数    -c 字节数、-m 字符数、-l 行数、-w 单词数    参数，被统计的文件路径，可作为管道符的输入</code></pre><h3 id="管道符"><a href="#管道符" class="headerlink" title="管道符 |"></a><strong>管道符 |</strong></h3><p>将管道符左边命令的结果，作为右边命令的输入</p><p><a href="https://blog.csdn.net/qq_43768851/article/details/124380356">https://blog.csdn.net/qq_43768851&#x2F;article&#x2F;details&#x2F;124380356</a></p><h3 id="echo命令"><a href="#echo命令" class="headerlink" title="echo命令"></a><strong>echo命令</strong></h3><p>可以使用echo命令在命令行内输出指定内容</p><pre><code class="hljs">echo 输出的内容</code></pre><p>无需选项只有一个参数，表示要输出的内容，复杂内容可以用””包围</p><h3 id="反引号符"><a href="#反引号符" class="headerlink" title="反引号符 &#96;"></a><strong>反引号符 &#96;</strong></h3><p>被包围的内容，会被作为命令执行，而非普通字符</p><p>例如：</p><pre><code class="hljs">echo pwd</code></pre><p>输出的是pwd三个字符</p><p>而</p><pre><code class="hljs">echo `pwd`</code></pre><p>输出的是执行<a href="#pwd%E5%91%BD%E4%BB%A4">pwd命令</a>输出的内容</p><h3 id="重定向符"><a href="#重定向符" class="headerlink" title="重定向符 &gt;"></a><strong>重定向符 &gt;</strong></h3><pre><code class="hljs">&gt;，将左侧命令的结果，覆盖写入到符号右侧指定文件中&gt;&gt;，将左侧命令的结果，追加写入到符号右侧指定文件中</code></pre><p>例如：</p><pre><code class="hljs">ls &gt; test.txt</code></pre><h3 id="tail命令"><a href="#tail命令" class="headerlink" title="tail命令"></a><strong>tail命令</strong></h3><p>查看文件尾部内容，并可以持续跟踪</p><pre><code class="hljs">tail [-f -num] Linux路径    -f 持续跟踪    -num 启动的时候查看尾部多少行，默认10        例如：tail -20 test.txt    Linux路径，表示被查看的文件</code></pre><h3 id="vi编辑器"><a href="#vi编辑器" class="headerlink" title="vi编辑器"></a><strong>vi编辑器</strong></h3><p>vi\vim编辑器，就是命令模式下的文本编辑器，用来编辑文件</p><p>vim是vi的升级版，一般用于vim即可，包含全部vi功能</p><pre><code class="hljs">vi 文件路径vim 文件路径</code></pre><ul><li><h4 id="运行模式"><a href="#运行模式" class="headerlink" title="运行模式"></a><strong>运行模式</strong></h4></li></ul><p>​命令模式，默认的模式，可以通过键盘快捷键控制文件内容</p><p>​输入模式，通过命令模式进入，可以输入内容进行编辑，按esc退回命令模式</p><p>​底线命令模式，通过命令模式进入，可以对文件进行保存、关闭等操作</p><ul><li><h4 id="命令模式快捷键"><a href="#命令模式快捷键" class="headerlink" title="命令模式快捷键"></a><strong>命令模式快捷键</strong></h4></li></ul><table><thead><tr><th align="center">模式</th><th align="center">命令</th><th align="center">描述</th></tr></thead><tbody><tr><td align="center">命令模式</td><td align="center"><code>i</code></td><td align="center">在当前光标位置进入<code>输入模式</code></td></tr><tr><td align="center">命令模式</td><td align="center"><code>a</code></td><td align="center">在当前光标位置 之后 进入<code>输入模式</code></td></tr><tr><td align="center">命令模式</td><td align="center"><code>I</code>（大写<code>i</code>）</td><td align="center">在当前行的开头，进入<code>输入模式</code></td></tr><tr><td align="center">命令模式</td><td align="center"><code>A</code></td><td align="center">在当前行的结尾，进入<code>输入模式</code></td></tr><tr><td align="center">命令模式</td><td align="center"><code>o</code></td><td align="center">在当前光标的下一行进入<code>输入模式</code></td></tr><tr><td align="center">命令模式</td><td align="center"><code>O</code>（大写<code>o</code>）</td><td align="center">在当前光标的上一行进入<code>输入模式</code></td></tr><tr><td align="center">输入模式</td><td align="center"><code>Esc</code></td><td align="center">任何情况下按<code>Esc</code>键都能回到<code>命令模式</code></td></tr><tr><td align="center">命令模式</td><td align="center">键盘上、键盘<code>k</code>键</td><td align="center">向上移动光标</td></tr><tr><td align="center">命令模式</td><td align="center">键盘下、键盘<code>j</code>键</td><td align="center">向下移动光标</td></tr><tr><td align="center">命令模式</td><td align="center">键盘左、键盘<code>h</code>键</td><td align="center">向左移动光标</td></tr><tr><td align="center">命令模式</td><td align="center">键盘右、键盘<code>l</code>键</td><td align="center">向右移动光标</td></tr><tr><td align="center">命令模式</td><td align="center">数字<code>0</code></td><td align="center">移动光标到当前行的开头</td></tr><tr><td align="center">命令模式</td><td align="center"><code>$</code></td><td align="center">移动光标到当前行的结尾</td></tr><tr><td align="center">命令模式</td><td align="center">pageup(<code>PgUp</code>)</td><td align="center">向上翻页</td></tr><tr><td align="center">命令模式</td><td align="center">pangdown(<code>PgDn</code>)</td><td align="center">向下翻页</td></tr><tr><td align="center">命令模式</td><td align="center"><code>/</code></td><td align="center">进入搜索模式</td></tr><tr><td align="center">命令模式</td><td align="center"><code>n</code></td><td align="center">向上继续搜索</td></tr><tr><td align="center">命令模式</td><td align="center"><code>N</code></td><td align="center">向上继续搜索</td></tr><tr><td align="center">命令模式</td><td align="center"><code>dd</code></td><td align="center">删除光标所在行的内容</td></tr><tr><td align="center">命令模式</td><td align="center"><code>ndd</code></td><td align="center">n是数字，表示删除当前光标向下n行</td></tr><tr><td align="center">命令模式</td><td align="center"><code>yy</code></td><td align="center">复制当前行</td></tr><tr><td align="center">命令模式</td><td align="center"><code>nyy</code></td><td align="center">n是数字，复制当前行和下面的行</td></tr><tr><td align="center">命令模式</td><td align="center"><code>p</code></td><td align="center">粘贴复制的内容</td></tr><tr><td align="center">命令模式</td><td align="center"><code>u</code></td><td align="center">撤销修改</td></tr><tr><td align="center">命令模式</td><td align="center"><code>ctrl + r</code></td><td align="center">反向撤销修改</td></tr><tr><td align="center">命令模式</td><td align="center"><code>gg</code></td><td align="center">跳到首行</td></tr><tr><td align="center">命令模式</td><td align="center"><code>G</code></td><td align="center">跳到行尾</td></tr><tr><td align="center">命令模式</td><td align="center"><code>dG</code></td><td align="center">从当前行开始，向下全部删除</td></tr><tr><td align="center">命令模式</td><td align="center"><code>dgg</code></td><td align="center">从当前行开始，向上全部删除</td></tr><tr><td align="center">命令模式</td><td align="center"><code>d$</code></td><td align="center">从当前光标开始，删除到本行的结尾</td></tr><tr><td align="center">命令模式</td><td align="center"><code>d0</code></td><td align="center">从当前光标开始，删除到本行的开头</td></tr></tbody></table><ul><li><h4 id="底线命令模式"><a href="#底线命令模式" class="headerlink" title="底线命令模式"></a><strong>底线命令模式</strong></h4></li></ul><p>在命令模式内，输入英文<code>:</code>，即可进入底线命令模式，支持如下命令：</p><table><thead><tr><th align="center">模式</th><th align="center">命令</th><th align="center">描述</th></tr></thead><tbody><tr><td align="center">底线命令模式</td><td align="center"><code>:wq</code></td><td align="center">保存并退出</td></tr><tr><td align="center">底线命令模式</td><td align="center"><code>:q</code></td><td align="center">仅退出</td></tr><tr><td align="center">底线命令模式</td><td align="center"><code>:q!</code></td><td align="center">强制退出</td></tr><tr><td align="center">底线命令模式</td><td align="center"><code>:w</code></td><td align="center">仅保存</td></tr><tr><td align="center">底线命令模式</td><td align="center"><code>:set nu</code></td><td align="center">显示行号</td></tr><tr><td align="center">底线命令模式</td><td align="center"><code>:set paste</code></td><td align="center">设置粘贴模式</td></tr></tbody></table><h3 id="su命令"><a href="#su命令" class="headerlink" title="su命令"></a><strong>su命令</strong></h3><p>可以切换用户</p><pre><code class="hljs">su - 用户名- 表示切换后加载环境变量，建议带上用户名可以省略，省略默认切换到root</code></pre><h3 id="exit命令"><a href="#exit命令" class="headerlink" title="exit命令"></a><strong>exit命令</strong></h3><p>退出当前登录的用户</p><h3 id="sudo命令"><a href="#sudo命令" class="headerlink" title="sudo命令"></a><strong>sudo命令</strong></h3><p>可以让一条普通命令带有root权限</p><pre><code class="hljs">sudo 其他命令</code></pre><p>执行<code>sudo</code>命令之前需要以root用户执行<code>visudo</code>命令，会自动通过vi编辑器打开&#x2F;etc&#x2F;sudoers，在文件的末尾添加<code>你的用户名 ALL=(ALL)NOPASSWD:ALL</code>后方可让普通用户有<code>sudo</code>命令的权限，<code>NOPASSWD</code>表示执行<code>sudo</code>命令时不需要输入密码，若需要输密码就将<code>NOPASSWD:</code>删除</p><h3 id="用户、用户组相关管理命令"><a href="#用户、用户组相关管理命令" class="headerlink" title="用户、用户组相关管理命令"></a><strong>用户、用户组相关管理命令</strong></h3><p><code>groupadd</code>添加组、<code>groupdel</code>删除组</p><pre><code class="hljs">groupadd 用户组名groupdel 用户组名</code></pre><p><code>useradd</code>添加用户、<code>userdel</code>删除用户</p><pre><code class="hljs">useradd [-g -d] 用户名    -g 选项，可选，指定用户的组，如果不指定，会创建同名组并自动加入，指定-g需要组已经存在，如以存在同名组，必须使用-g    -d 选项，可选，指定用户HOME路径，如果不指定，HOME目录默认在：/home/用户名    例如：        useradd test1 -g group1 -d /home/testuserdel -r 用户名    -r 选项，可选，删除用户的HOME路径，如果不指定，HOME目录不会删除（HOME目录默认在：/home/用户名）</code></pre><p><code>usermod</code>修改用户组、<code>id</code>命令查看用户信息</p><pre><code class="hljs">usermod -aG 用户组 用户名    将指定用户加入指定用户组    id 用户名    参数，用户名，被查看的用户，如果不指定用户名则查看当前登录用户</code></pre><p><code>getent passwd</code>查看系统全部用户信息</p><p><img src="https://img.w6wg.cn/imgs/20241008220742.png"></p><pre><code class="hljs">共有7份信息，分别是：    用户名:密码(显示为x):用户ID:组ID:描述信息（空）:HOME目录:执行终端（默认bash）</code></pre><p><code>getent group</code>查看系统全部组信息</p><p><img src="https://img.w6wg.cn/imgs/20241008220845.png"></p><pre><code class="hljs">包含3份信息，分别是：    组名称:组认证（显示为x）:组ID:</code></pre><h3 id="查看权限控制信息"><a href="#查看权限控制信息" class="headerlink" title="查看权限控制信息"></a><strong>查看权限控制信息</strong></h3><p><code>ls -l</code>列出权限信息</p><p><img src="https://img.w6wg.cn/imgs/20241009105821.png"></p><p>1 表示文件、文件夹的权限控制信息</p><p>2 表示文件、文件夹所属用户</p><p>3 表示文件、文件夹所属用户组</p><ul><li><h4 id="权限细节"><a href="#权限细节" class="headerlink" title="权限细节"></a><strong>权限细节</strong></h4></li></ul><p><img src="https://img.w6wg.cn/imgs/20241009111209.png"></p><table><thead><tr><th align="center">文件类型</th><th align="center">所属用户权限</th><th align="center">所属用户组权限</th><th align="center">其他用户权限</th></tr></thead><tbody><tr><td align="center"><code>-</code>或<code>d</code>或<code>l</code></td><td align="center"><code>r</code>或<code>-</code>   <code>w</code>或<code>-</code>   <code>x</code>或<code>-</code></td><td align="center"><code>r</code>或<code>-</code>   <code>w</code>或<code>-</code>  <code>x</code>或<code>-</code></td><td align="center"><code>r</code>或<code>-</code>   <code>w</code>或<code>-</code>   <code>x</code>或<code>-</code></td></tr></tbody></table><pre><code class="hljs">文件类型：    - 表示文件    d 表示文件夹    l 表示软连接权限：    r 表示读权限    w 表示写权限    x 表示执行权限    - 表示无权限</code></pre><h3 id="chmod命令"><a href="#chmod命令" class="headerlink" title="chmod命令"></a><strong>chmod命令</strong></h3><p>功能：修改文件、文件夹的权限细节</p><p>限制：只能是文件、文件夹的所属用户或root用户可以修改</p><p>语法：</p><pre><code class="hljs">chmod -R 权限 文件或文件夹-R 选项，可选，对文件夹内的全部内容应用同样规则</code></pre><ul><li><h4 id="权限的数字序号"><a href="#权限的数字序号" class="headerlink" title="权限的数字序号"></a><strong>权限的数字序号</strong></h4></li></ul><table><thead><tr><th align="center">权限</th><th align="center">数字</th></tr></thead><tbody><tr><td align="center">r</td><td align="center">4</td></tr><tr><td align="center">w</td><td align="center">2</td></tr><tr><td align="center">x</td><td align="center">1</td></tr></tbody></table><pre><code class="hljs">chmod 640 text.txt   # 分析- 6 = 4 + 2 + 0 表示所有者具有 rw 权限 - 4 = 4 + 0 + 0 表示群组用户具有 r 权限  - 0 = 0 + 0 + 0 表示其它用户没有权限对应文字权限为：-rw-r-----  </code></pre><h3 id="chown命令"><a href="#chown命令" class="headerlink" title="chown命令"></a><strong>chown命令</strong></h3><p>功能：修改文件、文件夹的所属用户</p><p>限制：只可root用户执行</p><p>语法：</p><pre><code class="hljs">chown -R 用户:用户组 文件或文件夹-R 选项，可选，同chmod，对文件夹内的全部内容应用同样规则: 用于分割用户和用户组</code></pre><h3 id="各类小技巧快捷键"><a href="#各类小技巧快捷键" class="headerlink" title="各类小技巧快捷键"></a><strong>各类小技巧快捷键</strong></h3><table><thead><tr><th align="center">快捷键</th><th align="center">作用</th></tr></thead><tbody><tr><td align="center"><code>Tab</code></td><td align="center">输入命令时按<code>Tab</code>键自动补全代码</td></tr><tr><td align="center"><code>ctrl</code> + <code>c</code></td><td align="center">强制停止</td></tr><tr><td align="center"><code>ctrl</code> + <code>d</code></td><td align="center">退出当前用户登录</td></tr><tr><td align="center"><code>history</code></td><td align="center">查看历史命令</td></tr><tr><td align="center"><code>!</code></td><td align="center">命令前缀，输入命令关键词，自下而上匹配<code>history</code>命令中的命令，或输入<code>history</code>命令中历史命令的序号</td></tr><tr><td align="center"><code>ctrl</code> + <code>r</code></td><td align="center">搜索历史命令</td></tr><tr><td align="center"><code>ctrl</code> + <code>a</code>&#x2F;<code>e</code></td><td align="center">光标移动到开始或结束</td></tr><tr><td align="center"><code>ctrl</code> + <code>←</code>&#x2F;<code>→</code></td><td align="center">光标左右跳单词</td></tr><tr><td align="center"><code>ctrl</code> + <code>l</code>或<code>clear</code>命令</td><td align="center">清屏</td></tr></tbody></table><h3 id="yum软件安装"><a href="#yum软件安装" class="headerlink" title="yum软件安装"></a><strong>yum软件安装</strong></h3><p>在CentOS系统中，使用yum命令联网管理软件安装，需要root权限</p><p>yum语法：</p><pre><code class="hljs">yum -y [install | remove | search] 软件名称-y 选项，可选，表示安装过程中自动同意install 参数，表示安装软件remove 参数，表示卸载软件search 参数，表示查找软件</code></pre><p>在Ubuntu系统中，使用apt命令联网管理软件安装</p><pre><code class="hljs">yum -y [install | remove | search] 软件名称与yum命令相同</code></pre><h3 id="systemctl命令"><a href="#systemctl命令" class="headerlink" title="systemctl命令"></a><strong>systemctl命令</strong></h3><p>功能：可以控制软件（服务）的启动、关闭、开机启动</p><ul><li>系统内置服务均可被<code>systemctl</code>控制</li><li>第三方软件，如果自动注册了也可以被<code>systemctl</code>控制</li><li>第三方软件，如果没有自动注册，可以手动注册（后续学习）</li></ul><p>语法：</p><pre><code class="hljs">systemctl [start | stop | restart | status | enable | disable] 服务名    start 开启服务    stop 停止服务    restart 重启服务    status 查看服务状态    enable 将服务设置为开机自启动    disable 关闭服务开机自启动</code></pre><h3 id="软连接"><a href="#软连接" class="headerlink" title="软连接"></a><strong>软连接</strong></h3><p>可以将文件、文件夹链接到其他位置</p><p>链接只是一个指向，并不是物理移动，类似Windows系统的快捷方式</p><p>语法：</p><pre><code class="hljs">ln -s 参数1 参数2    -s 选项，创建软连接    参数1：被链接的文件或文件夹    参数2：要链接去的目的地</code></pre><p>Windows使用软连接：<a href="https://blog.w6wg.cn/419.html">Windows创建软链接</a></p><h3 id="date命令"><a href="#date命令" class="headerlink" title="date命令"></a><strong>date命令</strong></h3><p>功能：date命令可以查看日期和时间，并可以格式化显示形式以及做日期计算</p><p>语法：</p><pre><code class="hljs">date -d &quot;+格式化字符串&quot;        -d 可选，选项，按照给定的字符串显示日期，一般用于日期计算        date -d &quot;+1 year&quot; &quot;+%Y%m%d&quot;显示后一年的日期        date -d &quot;-2 day&quot; &quot;+%Y%m%d&quot;显示前两天的日期            支持的时间标记：                year年                month 月                day天                hour小时                minute分钟                second秒                    格式化字符串：        %Y年        %y年份后两位数字（2024年取24）（范围00-99）        %m月份（范围01-12）        %d日（范围01-31）        %H小时（范围01-23）        %M分钟（范围00-59）        %S秒（范围00-59）        %s自1970-01-01 00:00:00 UTC 到现在的秒数</code></pre><p>例：</p><p><img src="https://img.w6wg.cn/imgs/20241009155429.png"></p><ul><li><h4 id="修改时区"><a href="#修改时区" class="headerlink" title="修改时区"></a><strong>修改时区</strong></h4></li></ul><p>使用root权限，执行如下命令，修改时区为东八时区</p><pre><code class="hljs">rm -f /etc/localtimeln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime    说明：将自带的localtime文件删除，并将/usr/share/zoneinfo/Asia/Shanghai文件链接为localtime文件即可</code></pre><ul><li><h4 id="自动校准时间"><a href="#自动校准时间" class="headerlink" title="自动校准时间"></a><strong>自动校准时间</strong></h4></li></ul><p>安装chrony：</p><pre><code class="hljs">yum -y install chrony</code></pre><p>启动并设置开机自启：</p><pre><code class="hljs">systemctl start chronydsystemctl enable chronyd</code></pre><p>也可以手动同步时间：</p><pre><code class="hljs">chronyc makestep</code></pre><p>更多说明：<a href="https://blog.csdn.net/qq_43437874/article/details/110651605">Linux服务器时间同步chrony详解+案例-CSDN博客</a></p><h3 id="IP地址和主机名"><a href="#IP地址和主机名" class="headerlink" title="IP地址和主机名"></a><strong>IP地址和主机名</strong></h3><ul><li><h4 id="IP地址："><a href="#IP地址：" class="headerlink" title="IP地址："></a><strong>IP地址：</strong></h4></li></ul><p>IP地址是联网计算机的网络地址，用于在网络中进行定位</p><p>格式是a.b.c.d，其中abcd都是0~255的数字</p><p>特殊IP有：127.0.0.1，本地回环IP，表示本机</p><p>0.0.0.0：也可以表示本机，也可以在一些白名单中表示任意IP</p><ul><li><h4 id="查看本机IP"><a href="#查看本机IP" class="headerlink" title="查看本机IP"></a><strong>查看本机IP</strong></h4></li></ul><p>命令：</p><pre><code class="hljs">ifconfig</code></pre><p>Windows使用<code>ipconfig</code>命令查看</p><ul><li><h4 id="主机名："><a href="#主机名：" class="headerlink" title="主机名："></a><strong>主机名：</strong></h4></li></ul><p>主机名就是主机的名称，用于表示一个计算机</p><ul><li><h4 id="查看-修改主机名"><a href="#查看-修改主机名" class="headerlink" title="查看&#x2F;修改主机名"></a><strong>查看&#x2F;修改主机名</strong></h4></li></ul><p>查看主机名：</p><pre><code class="hljs">hostname</code></pre><p>修改主机名（需root，修改后重新登录即可查看）：</p><pre><code class="hljs">hostnamectl set-hostname 主机名</code></pre><p><img src="https://img.w6wg.cn/imgs/20241009184801.png"></p><ul><li><h4 id="域名映射："><a href="#域名映射：" class="headerlink" title="域名映射："></a><strong>域名映射：</strong></h4></li></ul><p>​可以通过主机名找到对应计算机的IP地址，这就是主机名映射（域名解析）</p><p>​先通过系统本地的记录去查找，如果找不到就联网去公开DNS服务器去查找</p><p>​为了方便记忆，可以修改Windows的hosts文件来设置本地域名解析</p><p>​方法：以管理员身份打开计算机中<code>C:\Windows\System32\drivers\etc</code>目录下的<code>hosts</code>文件，在文件末尾添加IP和对应的自定义主机名</p><p><img src="https://img.w6wg.cn/imgs/20241009163616.png"></p><p>​这样在连接Linux的时候可以用主机名来代替IP</p><p><img src="https://img.w6wg.cn/imgs/20241009163852.png"></p><h3 id="虚拟机配置Linux固定IP"><a href="#虚拟机配置Linux固定IP" class="headerlink" title="虚拟机配置Linux固定IP"></a><strong>虚拟机配置Linux固定IP</strong></h3><p>连接ssh的IP在电脑重启后可能会改变，可以设置成固定IP</p><ol><li><p>首先将虚拟机关机，虚拟机主页选项栏中点击<code>编辑</code>-<code>虚拟网络编辑器</code></p></li><li><p>在弹出的窗口中点击右下角的<code>更改设置</code></p><p><img src="https://img.w6wg.cn/imgs/20241009165236.png"></p></li><li><p>然后编辑<code>子网IP</code>为<code>192.168.88.0</code>（其中的<code>88</code>可自定义，范围<code>0-255</code>，后续步骤都会使用<code>88</code>），<code>子网掩码</code>为<code>255.255.255.0</code>，点击应用</p></li><li><p>选择<code>NAT设置</code>，在弹出的窗口中设置<code>网关IP</code>为<code>192.168.88.2</code>，点击<code>确定</code>，<code>确定</code></p></li><li><p>将虚拟机开机，打开虚拟机的终端，切换到root用户，执行</p><pre><code class="hljs">nmcli connection show</code></pre><p>查看DEVICE选项下前缀为ens的名称，后面的数字可能不一样，记住这个名称</p><p><img src="https://img.w6wg.cn/imgs/20241009170854.png"></p></li><li><p>执行</p><pre><code class="hljs">vim /etc/sysconfig/network-scripts/ifcfg-上一步记住的名称    例：        vim /etc/sysconfig/network-scripts/ifcfg-ens160</code></pre></li><li><p>复制下面内容到上一步打开的文件里面</p><pre><code class="hljs">NAME=&quot;随意名称&quot;DEVICE=&quot;第5步记住的名称&quot;BOOTPROTO=&quot;static&quot;ONBOOT=&quot;yes&quot;IPADDR=&quot;192.168.88.130（其中的88与第3步一样，130可自定义，范围0-255）&quot;NETMASK=&quot;255.255.255.0&quot;GATEWAY=&quot;192.168.88.2（其中的88与第3步一样）&quot;DNS1=&quot;192.168.88.2（其中的88与第3步一样）&quot;</code></pre></li><li><p>重启虚拟机</p><pre><code class="hljs">reboot</code></pre></li><li><p>查看是否生效</p><pre><code class="hljs">nmcli connection show</code></pre></li></ol><p>​看绿色的一行，<code>NAME</code>与第7步中的<code>NAME</code>相同就表示生效了，后续使用ssh连接IP都不会改变</p><p>​也可以输入<code>ifconfig</code>命令查看IP地址是否是自定义的IP地址</p><h3 id="网络请求和下载"><a href="#网络请求和下载" class="headerlink" title="网络请求和下载"></a><strong>网络请求和下载</strong></h3><ul><li><h4 id="ping命令"><a href="#ping命令" class="headerlink" title="ping命令"></a><strong>ping命令</strong></h4></li></ul><p>语法：</p><pre><code class="hljs">ping -c num IP或主机名        -c num测试次数，可选，num：测试的次数数字    例：ping -c 10 127.0.0.1</code></pre><ul><li><h4 id="wget命令"><a href="#wget命令" class="headerlink" title="wget命令"></a><strong>wget命令</strong></h4></li></ul><p>语法：</p><pre><code class="hljs">wget -b url        -b 选项，可选，表示后台下载    url是下载文件的链接</code></pre><ul><li><h4 id="curl命令"><a href="#curl命令" class="headerlink" title="curl命令"></a><strong>curl命令</strong></h4></li></ul><p>可以发送http网络请求，可用于下载文件、获取信息等</p><pre><code class="hljs">curl -O url        -O 可选，大写字母o，用于下载文件，当url是链接时，可使用此选项保存文件    url表示要发起请求的网络地址</code></pre><h3 id="端口"><a href="#端口" class="headerlink" title="端口"></a><strong>端口</strong></h3><ul><li><h4 id="什么是端口"><a href="#什么是端口" class="headerlink" title="什么是端口"></a><strong>什么是端口</strong></h4></li></ul><p>​端口是指计算机和外部交互的出入口，可以分为物理端口和虚拟端口</p><ul><li>物理端口：USB、HDMI、DP、VGA、RG45等</li><li>虚拟端口：操作系统和外部交互的出入口</li></ul><p>IP只能确定计算机，通过端口才能锁定要交互的程序</p><ul><li><h4 id="端口的划分（建议）"><a href="#端口的划分（建议）" class="headerlink" title="端口的划分（建议）"></a><strong>端口的划分（建议）</strong></h4></li></ul><p>公认端口：1~ 1023，用于系统内置或常用知名软件绑定使用</p><p>注册端口：1024~49151，用于松散绑定使用（用户自定义）</p><p>动态端口：49152~65535，用于临时使用（多用于出口）</p><ul><li><h4 id="查看端口占用"><a href="#查看端口占用" class="headerlink" title="查看端口占用"></a><strong>查看端口占用</strong></h4></li></ul><p>安装nmap</p><pre><code class="hljs">yum -y install nmap</code></pre><p>查看指定IP对外暴露端口</p><pre><code class="hljs">nmap IP地址</code></pre><p>安装netstat</p><pre><code class="hljs">yum -y install net-tools</code></pre><p>查看本机指定端口号的占用情况</p><pre><code class="hljs">netstat -anp|grep 端口号</code></pre><p>关闭指定PID（进程号）的进程</p><pre><code class="hljs">kill -9 PID    -9 选项，可选，表示强制停止</code></pre><h3 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a><strong>进程管理</strong></h3><ul><li><h4 id="什么是进程"><a href="#什么是进程" class="headerlink" title="什么是进程"></a><strong>什么是进程</strong></h4></li></ul><p>​进程是指程序在操作系统内运行后被注册为系统内的一个进程，并拥有独立的进程ID（进行号）</p><ul><li><h4 id="管理进程的命令"><a href="#管理进程的命令" class="headerlink" title="管理进程的命令"></a><strong>管理进程的命令</strong></h4></li></ul><p>查看进程信息</p><pre><code class="hljs">ps -ef        -e 选项，可选，显示出全部的进程    -f 选项，可选，以完全格式化的形式展示信息（展示全部信息）    一般来说，固定用法就是：ps -ef列出全部进程的全部信息</code></pre><p><img src="https://img.w6wg.cn/imgs/20241009194845.png"></p><pre><code class="hljs">从左到右分别是：    UID进程所属的用户ID    PID进程的进程号    PPID进程的父ID（启动此进程的其它进程）    C此进程的CPU占用率（百分比）    STIME进程的启动时间    TTY启动此进程的终端序号，如显示？，表示非终端启动    TIME进程占用CPU的时间    CMD进程对应的名称或启动路径或启动命令</code></pre><p>过滤指定关键词进程信息</p><pre><code class="hljs">ps -ef|grep 关键字</code></pre><p>关闭指定PID（进程号）的进程</p><pre><code class="hljs">kill -9 PID    -9 选项，可选，表示强制停止</code></pre><h3 id="主机状态监控"><a href="#主机状态监控" class="headerlink" title="主机状态监控"></a><strong>主机状态监控</strong></h3><ul><li><h4 id="top命令"><a href="#top命令" class="headerlink" title="top命令"></a><strong>top命令</strong></h4></li></ul><p>类似Windows任务管理器</p><p>查看CPU、内存、进程的信息</p><ul><li><h4 id="df命令"><a href="#df命令" class="headerlink" title="df命令"></a><strong>df命令</strong></h4></li></ul><blockquote><p>df -h</p><p>​-h 选项，可选，以更加人性化的单位显示</p></blockquote><p>查看磁盘使用率</p><ul><li><h4 id="iostat命令"><a href="#iostat命令" class="headerlink" title="iostat命令"></a><strong>iostat命令</strong></h4></li></ul><p>查看磁盘速率</p><ul><li><h4 id="sar-n-DEV"><a href="#sar-n-DEV" class="headerlink" title="sar -n DEV"></a><strong>sar -n DEV</strong></h4></li></ul><p>查看网络情况</p><h3 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a><strong>环境变量</strong></h3><ol><li>什么是环境变量？</li></ol><p>环境变量是一组信息记录，类型是KeyValue型（名称&#x3D;值），用于操作系统运行的时候记录关键信息</p><ol start="2"><li><p>通过env命令可以查看当前系统配置的环境变量信息</p></li><li><p>通过$符号，可以取出环境变量的值</p></li><li><p>什么是PATH，作用是？</p><p>环境变量PATH会记录一组目录，目录之间用<code>:</code>隔开。这里记录的是命令的搜索路径，</p><p>当执行命令会从记录中记录的目录挨个搜索要执行的命令并执行。</p><p>可以通过修改这个项目的值，加入自定义的命令搜索路径</p><p>如：<code>export PATH=$PATH:自定义路径</code></p></li><li><p>如何修改环境变量？</p><pre><code class="hljs"> 临时生效：export 名称=值 永久生效：     针对用户：~/.bashrc 文件中添加配置：export 名称=值     针对全部用户：/etc/profile 文件中添加配置：同上     配置完成后，可以通过 source 配置文件 命令立即生效</code></pre></li></ol><blockquote><p><strong>！注意</strong></p><p>​修改PATH变量添加<code>export 名称=值</code>中的值时需要在<code>=</code>后面加上<code>$PATH:</code>表示追加命令，否则将覆盖PATH变量</p></blockquote><h3 id="Linux文件的上传和下载"><a href="#Linux文件的上传和下载" class="headerlink" title="Linux文件的上传和下载"></a><strong>Linux文件的上传和下载</strong></h3><ol><li><p>使用Windows<code>FinalShell</code>软件对Linux系统进行上传和下载操作</p><p>上传：将文件拖进软件下方文件窗口或右击下方文件窗口内点击上传</p><p>下载：右击下方文件窗口内的文件点击下载</p></li><li><p><code>rz</code>、<code>sz</code>命令</p><p>通过<code>yum -y install lrzsz</code>可以安装此命令</p><p><code>rz</code>进行文件上传</p><p><code>sz</code>进行文件下载</p></li></ol><h3 id="压缩和解压"><a href="#压缩和解压" class="headerlink" title="压缩和解压"></a><strong>压缩和解压</strong></h3><ol><li><p>Linux系统常用的压缩格式有：</p><p>tar格式，归档文件，简单的将文件整合到一个文件内，无压缩效果</p><p>gzip格式，gzip压缩文件，不仅能整合到一个文件中，同时有体积压缩效果</p></li><li><p>tar命令</p><pre><code class="hljs">tar [-z -x -v -c -f -C] 参数1 参数2 ... 参数N        -c可选，创建压缩文件    -v可选，查看压缩\解压过程    -x可选，解压模式    -f可选，指定压缩\解压的文件，在选项组内必须在尾部    -z可选，gzip模式，在选项组内建议在开头    -C可选，指定解压的路径，单独使用例如：    压缩：tar -zcvf test.tar.gz test1.txt test2.txt -C /home/test    解压：tar -xvf test.tar.gz</code></pre></li><li><p>zip命令</p><pre><code class="hljs">zip -r 参数1 参数2 ... 参数N        -r可选，压缩文件夹使用，和rm、cp等命令的-r效果一致例：    zip -r test.zip test test3.txt test4.txt</code></pre></li><li><p>unzip命令</p><pre><code class="hljs">unzip -d 参数        -d可选，指定解压去的目录，不指定默认当前目录例：    unzip -d /home/centos test.zip 或 unzip test.zip -d /home/centos</code></pre></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>计算机</category>
+      
+      <category>Linux</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>电脑知识</tag>
+      
+      <tag>Linux</tag>
+      
+      <tag>学习</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>微信清空性别和地区</title>
+    <link href="/2.html"/>
+    <url>/2.html</url>
+    
+    <content type="html"><![CDATA[<h1 id="新设备登录微信"><a href="#新设备登录微信" class="headerlink" title="新设备登录微信"></a>新设备登录微信</h1><p>1.用没登录过自己微信的手机登录微信（理论双开也可以），电脑可以用模拟器（<a href="https://syzs.qq.com/">腾讯手游助手</a>、<a href="https://www.ldmnq.com/">雷电模拟器</a>、<a href="https://www.xyaz.cn/">逍遥模拟器</a>、<a href="https://mumu.163.com/">MuMu模拟器</a>等）</p><p>2.登录之后打开个人资料，进入性别设置，跟下图一样男女都没选择就代表清空成功了，点完成即可，如果不是就换个手机或模拟器重新登录或等一段时间再试</p><p><img src="https://img.w6wg.cn/imgs/wxkbxbdq.jpg"></p><p>3.跟上图一样成功后再登录回原手机可能还会显示性别地区，包括好友看你时也显示，这是因为手机微信没有清空缓存（安卓手机可能会这样），备份重要资料卸载重装微信就可以了。（苹果手机会自动更新信息不需要清缓存）</p><hr><p>（参考视频：<a href="https://www.bilibili.com/video/BV1ve411g7X1">微信修改空白性别地区</a>）</p><p>（参考文章：<a href="https://zhuanlan.zhihu.com/p/396490468?utm_psn=1810468006066798593">清空微信性别及地区方式（不需要tb）</a>）</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>手机</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>手机</tag>
+      
+      <tag>微信</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Windows更新时间延长100年</title>
+    <link href="/1.html"/>
+    <url>/1.html</url>
+    
+    <content type="html"><![CDATA[<h1 id="方式一：一键添加注册表（推荐）"><a href="#方式一：一键添加注册表（推荐）" class="headerlink" title="方式一：一键添加注册表（推荐）"></a><strong>方式一：一键添加注册表（推荐）</strong></h1><ol><li><p>下载FlightSettingsMaxPauseDays.reg<a href="https://www.123pan.com/s/mzurVv-edh63">点我下载</a>，双击运行，选择”是“添加到注册表中。</p></li><li><p>打开设置，找到Windows更新，可以任意选择延长的时间。</p></li></ol><h1 id="方式二：手动添加注册表"><a href="#方式二：手动添加注册表" class="headerlink" title="方式二：手动添加注册表"></a><strong>方式二：手动添加注册表</strong></h1><h2 id="1-添加注册表"><a href="#1-添加注册表" class="headerlink" title="1. 添加注册表"></a><strong>1. 添加注册表</strong></h2><p>Win+R打开运行，输入<code>regedit</code>回车打开注册表编辑器</p><p>地址栏中输入<code>计算机\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings</code>后回车</p><p>   <img src="https://img.w6wg.cn/imgs/Snipaste_2024-08-23_14-54-09.jpg"></p><p>在下方空白处单击右键新建选择<strong>DWORD(32位)值(D)</strong></p><p>名称为<code>FlightSettingsMaxPauseDays</code></p><p><img src="https://img.w6wg.cn/imgs/20240823145826.png"></p><p>双击新建的<code>FlightSettingsMaxPauseDays</code>选择基数为<strong>十进制</strong></p><p>数值数据为36500，代表最高可延长100年</p><p>   <img src="https://img.w6wg.cn/imgs/20240823150612.png"></p><h2 id="2-打开设置"><a href="#2-打开设置" class="headerlink" title="2. 打开设置"></a><strong>2. 打开设置</strong></h2><p>找到Windows更新，可以任意选择延长的时间</p><p><img src="https://img.w6wg.cn/imgs/20240823150809.png"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>计算机</category>
+      
+      <category>Windows</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>计算机</tag>
+      
+      <tag>电脑知识</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Windows创建软链接</title>
+    <link href="/419.html"/>
+    <url>/419.html</url>
+    
+    <content type="html"><![CDATA[<p>​    软连接的功能是为某一个文件或文件夹在另外一个位置建立一个链接（相当于<strong>高级版快捷方式</strong>）<br>​    当我们需要<strong>在不同的目录</strong>，<strong>用到相同的文件</strong>时，不需要在每一个需要的目录下都复制一次文件，只要在需要用到的目录下创建一个文件或文件夹软链接即可<span id="more"></span></p><p><strong>步骤：</strong></p><p><strong>1、</strong>按键盘上的win键输入<code>cmd</code>，右键单击<code>命令提示符</code>用管理员身份运行</p><p><strong>2、</strong>在打开的命令窗口中输入<code>mklink</code>，回车</p><p><strong>3、</strong>按照给出的格式输入相应的指令<br>例如创建一个目录的软链接：</p><pre><code class="hljs">mklink /j &quot;需要创建软链接的文件夹路径&quot; &quot;源文件夹路径&quot;</code></pre><p>（若失败可尝试去掉双引号，需要创建软链接的文件夹不需要自己提前创建）</p><pre><code class="hljs">/j 创建一个文件夹软链接/d 创建一个文件软链接/h 创建一个硬链接</code></pre><p><strong>4、</strong>如果需要删除软链接，用下面的指令（源文件不会删除）</p><pre><code class="hljs">rmdir &quot;已创建的软链接的文件或文件夹路径&quot;</code></pre>]]></content>
+    
+    
+    <categories>
+      
+      <category>计算机</category>
+      
+      <category>Windows</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>计算机</tag>
+      
+      <tag>电脑知识</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>将电脑程序用Windows服务运行</title>
+    <link href="/157.html"/>
+    <url>/157.html</url>
+    
+    <content type="html"><![CDATA[<p>此方法可以开机时不登录系统自动运行Windows程序</p><h4 id="1-下载"><a href="#1-下载" class="headerlink" title="1. 下载"></a><strong>1. 下载</strong></h4><p>instsrv.exe和srvany.exe <a href="https://200408.lanzout.com/iy7cE27507da">点我下载</a></p><p>将两个文件放到C盘某个文件夹中，这里为<code>C:\fuwu</code><br><img src="https://img.w6wg.cn/i/2022/07/15/mdmyy7.png"></p><h4 id="2-以管理员身份运行命令提示符"><a href="#2-以管理员身份运行命令提示符" class="headerlink" title="2. 以管理员身份运行命令提示符"></a><strong>2. 以管理员身份运行命令提示符</strong></h4><p><img src="https://img.w6wg.cn/i/2022/07/15/mdqo6v.png"><br>命令里面输入以下内容并回车，其中两个引号里面分别是上面下载的两个程序的路径</p><pre><code class="hljs">&quot;C:\fuwu\instsrv.exe&quot; 服务名称 &quot;C:\fuwu\srvany.exe&quot;</code></pre><p>提示下面内容就表示成功了<br><img src="https://img.w6wg.cn/i/2022/07/15/mdtr4l.png"></p><h4 id="3-打开注册表"><a href="#3-打开注册表" class="headerlink" title="3. 打开注册表"></a><strong>3. 打开注册表</strong></h4><p>按Win+R打开运行输入<code>redegit</code></p><p><img src="https://img.w6wg.cn/i/2022/07/15/me5dpa.png"><br>找到目录<code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\（你的服务名称）</code><br>右键单击你的服务名称文件夹选择新建项，名称为”Parameters”<br><img src="https://img.w6wg.cn/i/2022/07/15/me8hfw.png"></p><p>选中”Parameters”，在右边新建一个字符串值，名称为”Application”<br><img src="https://img.w6wg.cn/i/2022/07/15/mebhk1.png"><br>数值数据里填写你要做成服务的程序的完整路径（带程序名称+后缀)<br>例如：</p><pre><code class="hljs">E:\QQ\Bin\QQ.exe</code></pre><p><img src="https://img.w6wg.cn/i/2022/07/15/meegkg.png"><br>再次创建一个字符串值，名称为”AppDirectory”，数值数据里填写你要做成服务的程序所在的目录<br>例如：</p><pre><code class="hljs">E:\QQ\Bin</code></pre><p><img src="https://img.w6wg.cn/i/2022/07/15/mehmwe.png"></p><h4 id="4-打开服务"><a href="#4-打开服务" class="headerlink" title="4. 打开服务"></a><strong>4. 打开服务</strong></h4><p>Win+R打开运行输入<code>services.msc</code>打开服务，可以找到创建的服务，启动这个服务就可以了，双击服务可以设置启动方式<br><img src="https://img.w6wg.cn/i/2022/07/15/mettb7.png"></p><h4 id="5-删除服务"><a href="#5-删除服务" class="headerlink" title="5. 删除服务"></a><strong>5. 删除服务</strong></h4><p>如果想删除这个服务，删除注册表中创建的服务名称的文件夹，然后重启电脑即可。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>计算机</category>
+      
+      <category>Windows</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>计算机</tag>
+      
+      <tag>电脑知识</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【持续更新】Windows系统实用bat命令大全</title>
+    <link href="/44.html"/>
+    <url>/44.html</url>
+    
+    <content type="html"><![CDATA[<h4 id="一、服务类"><a href="#一、服务类" class="headerlink" title="一、服务类"></a><strong>一、服务类</strong></h4><h5 id="启动系统服务命令"><a href="#启动系统服务命令" class="headerlink" title="启动系统服务命令"></a><strong>启动系统服务命令</strong></h5><pre><code class="hljs">@echo offnet start 服务名称exit</code></pre><h5 id="结束系统服务命令"><a href="#结束系统服务命令" class="headerlink" title="结束系统服务命令"></a><strong>结束系统服务命令</strong></h5><pre><code class="hljs">@echo offnet stop 服务名称exit</code></pre><h5 id="结束并重启服务命令"><a href="#结束并重启服务命令" class="headerlink" title="结束并重启服务命令"></a><strong>结束并重启服务命令</strong></h5><pre><code class="hljs">@echo offecho STOPnet stop 服务名称timeout 5echo STARTnet start 服务名称pause</code></pre><p><code>timeout 5</code> 表示等待5秒后再打开服务</p><h5 id="设置服务启动类型"><a href="#设置服务启动类型" class="headerlink" title="设置服务启动类型"></a><strong>设置服务启动类型</strong></h5><pre><code class="hljs">@echo offsc config 服务名称 start= auto（自动）/demand（手动）/disabled（禁用）exit</code></pre><h4 id="二、关闭exe程序"><a href="#二、关闭exe程序" class="headerlink" title="二、关闭exe程序"></a><strong>二、关闭exe程序</strong></h4><h5 id="强制关闭程序"><a href="#强制关闭程序" class="headerlink" title="强制关闭程序"></a><strong>强制关闭程序</strong></h5><pre><code class="hljs">taskkill /f /im 程序名称</code></pre><h5 id="强制关闭所有程序"><a href="#强制关闭所有程序" class="headerlink" title="强制关闭所有程序"></a><strong>强制关闭所有程序</strong></h5><pre><code class="hljs">taskkill /F /FI &quot;USERNAME eq 账户名&quot; /FI &quot;IMAGENAME ne explorer.exe&quot; /FI &quot;IMAGENAME ne dwm.exe</code></pre><h4 id="三、关机、重启"><a href="#三、关机、重启" class="headerlink" title="三、关机、重启"></a><strong>三、关机、重启</strong></h4><h5 id="关机、重启"><a href="#关机、重启" class="headerlink" title="关机、重启"></a><strong>关机、重启</strong></h5><pre><code class="hljs">shutdown -s -t 10</code></pre><p>-s（关机）<br>-r（重启）<br>10（10秒后关机）</p><h4 id="四、删除文件"><a href="#四、删除文件" class="headerlink" title="四、删除文件"></a><strong>四、删除文件</strong></h4><h5 id="删除文件夹下所有文件"><a href="#删除文件夹下所有文件" class="headerlink" title="删除文件夹下所有文件"></a><strong>删除文件夹下所有文件</strong></h5><pre><code class="hljs">del 文件目录\*.* /F/S/Q/A</code></pre><p><code>*.*</code>中第一个<code>*</code>是文件名，第二个<code>*</code>是文件后缀，直接写<code>*.*</code>代表所有文件名所有后缀，即删除当前目录下所有文件，也可以删除指定文件</p><pre><code class="hljs">（不区分大小写）/P            删除每一个文件之前提示确认。/F            强制删除只读文件。/S            删除所有子目录中的指定的文件。/Q            安静模式。删除全局通配符时，不要求确认。/A            根据属性选择要删除的文件属性           R  只读文件                    S  系统文件              H  隐藏文件                    A  存档文件              I  无内容索引文件               L  重分析点              -  表示“否”的前缀</code></pre><h5 id="删除文件夹"><a href="#删除文件夹" class="headerlink" title="删除文件夹"></a><strong>删除文件夹</strong></h5><pre><code class="hljs">rmdir 文件目录 /S/Q</code></pre><hr><pre><code class="hljs">（不区分大小写）/S            删除所有子目录中的指定的文件。/Q            安静模式。删除全局通配符时，不要求确认。</code></pre><p><strong>待更新…</strong></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>计算机</category>
+      
+      <category>Windows</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>计算机</tag>
+      
+      <tag>电脑知识</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  
+</search>
